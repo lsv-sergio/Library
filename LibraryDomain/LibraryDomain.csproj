@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{531636AC-0E69-4052-A443-C63C3CD6C2FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibraryDomain</RootNamespace>
+    <AssemblyName>LibraryDomain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\bing\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\AuthorCommands.cs" />
+    <Compile Include="Commands\BookCommands.cs" />
+    <Compile Include="Commands\BookSeriesCommands.cs" />
+    <Compile Include="Commands\DomainCommands.cs" />
+    <Compile Include="Commands\IAuthorCommands.cs" />
+    <Compile Include="Commands\IBookCommands.cs" />
+    <Compile Include="Commands\IBookSeriesCommands.cs" />
+    <Compile Include="Commands\IDomainCommands.cs" />
+    <Compile Include="Commands\IPublishingHouseCommands.cs" />
+    <Compile Include="Commands\PublishingHouseCommands.cs" />
+    <Compile Include="Core\CoreDomain.cs" />
+    <Compile Include="Core\Domains\AuthorDomain.cs" />
+    <Compile Include="Core\Domains\BaseDomain.cs" />
+    <Compile Include="Core\Domains\BookDomain.cs" />
+    <Compile Include="Core\Domains\BookSeriesDomain.cs" />
+    <Compile Include="Core\Domains\IAuthorDomain.cs" />
+    <Compile Include="Core\Domains\IBaseDomain.cs" />
+    <Compile Include="Core\Domains\IBookDomain.cs" />
+    <Compile Include="Core\Domains\IBookSeriesDomain.cs" />
+    <Compile Include="Core\Domains\IDomains.cs" />
+    <Compile Include="Core\Domains\IPublishingHouseDomain.cs" />
+    <Compile Include="Core\Domains\PublishingHouseDomain.cs" />
+    <Compile Include="Core\ICoreDomain.cs" />
+    <Compile Include="Core\Links\BookSeriesLink.cs" />
+    <Compile Include="Core\Links\IAuthorLink.cs" />
+    <Compile Include="Core\Links\IBookSeriesLink.cs" />
+    <Compile Include="Core\Links\IBookLink.cs" />
+    <Compile Include="Core\Links\IPublishingHouseLink.cs" />
+    <Compile Include="Core\Links\PublishingHouseLink.cs" />
+    <Compile Include="Core\Links\AuthorLink.cs" />
+    <Compile Include="Core\Links\BaseLink.cs" />
+    <Compile Include="Core\Links\BookLink.cs" />
+    <Compile Include="Core\Links\ILink.cs" />
+    <Compile Include="Core\Views\AuthorDomainView.cs" />
+    <Compile Include="Core\Views\BaseDomainView.cs" />
+    <Compile Include="Core\Views\BookDomainView.cs" />
+    <Compile Include="Core\Views\BookSeriesDomainView.cs" />
+    <Compile Include="Core\Views\IAuthorDomainView.cs" />
+    <Compile Include="Core\Views\IBaseDomainView.cs" />
+    <Compile Include="Core\Views\IBookDomainView.cs" />
+    <Compile Include="Core\Views\IBookSeriesDomainView.cs" />
+    <Compile Include="Core\Views\IPublishingHouseDomainView.cs" />
+    <Compile Include="Core\Views\PublishingHouseDomainView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\DomainQueries\BaseDomainQueries.cs" />
+    <Compile Include="Queries\DomainQueries\Factory\DomainQueriesFactory.cs" />
+    <Compile Include="Queries\DomainQueries\Factory\IDomainQueriesFactory.cs" />
+    <Compile Include="Queries\DomainQueries\IDomainQueries.cs" />
+    <Compile Include="Queries\DomainQueries\AuthorDomainQueries.cs" />
+    <Compile Include="Queries\AbstractQuery\BaseQueries.cs" />
+    <Compile Include="Queries\DomainQueries\BookDomainQueries.cs" />
+    <Compile Include="Queries\DomainQueries\BookSeriesDomainQueries.cs" />
+    <Compile Include="Queries\DomainQueries\IAuthorDomainQueries.cs" />
+    <Compile Include="Queries\LinksQueries\IPublishingHouseLinkQueries.cs" />
+    <Compile Include="Queries\LinksQueries\PublishingHouseLinkQueries.cs" />
+    <Compile Include="Queries\LinksQueries\BookSeriesLinkQueries.cs" />
+    <Compile Include="Queries\LinksQueries\BookLinkQueries.cs" />
+    <Compile Include="Queries\LinksQueries\AuthorLinkQueries.cs" />
+    <Compile Include="Queries\LinksQueries\BaseLinkQueries.cs" />
+    <Compile Include="Queries\LinksQueries\IAuthorLinkQueries.cs" />
+    <Compile Include="Queries\LinksQueries\Factory\ILinkFactory.cs" />
+    <Compile Include="Queries\DomainQueries\IBookDomainQueries.cs" />
+    <Compile Include="Queries\DomainQueries\IBookSeriesDomainQueries.cs" />
+    <Compile Include="Queries\DomainQueries\IPublishingHouseQueries.cs" />
+    <Compile Include="Core\IValidator.cs" />
+    <Compile Include="Queries\LinksQueries\IBookLinkQueries.cs" />
+    <Compile Include="Queries\LinksQueries\IBookSeriesLinkQueries.cs" />
+    <Compile Include="Queries\LinksQueries\ILinkQueries.cs" />
+    <Compile Include="Queries\LinksQueries\Factory\LinkFactory.cs" />
+    <Compile Include="Queries\LinksQueries\LinkValidator.cs" />
+    <Compile Include="Queries\DomainQueries\PublishingHouseQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\AuthorViewQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\BaseViewQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\BookViewQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\BookSeriesViewQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\IAuthorViewQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\IBookViewQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\IBookSeriesViewQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\IPublishingHouseViewQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\IViewQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\Factory\IViewQueriesFactory.cs" />
+    <Compile Include="Queries\ViewsQueries\PublishingHouseViewQueries.cs" />
+    <Compile Include="Queries\ViewsQueries\Factory\ViewQueriesFactory.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryDal\LibraryDal.csproj">
+      <Project>{8ddf5f45-2005-4932-8f41-2cdc20e5e6bf}</Project>
+      <Name>LibraryDal</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

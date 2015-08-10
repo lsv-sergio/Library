@@ -1,0 +1,675 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище LibraryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="PageNumber" Type="int" Nullable="false" />
+          <Property Name="BookSeriesId" Type="int" Nullable="false" />
+          <Property Name="PublisherHouseId" Type="int" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookSeries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="PublishingHouseId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PublishingHouse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Library.dbo.AuthorsStatistic" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="AuthorsStatistic">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="BookId" />
+            <PropertyRef Name="BookName" />
+            <PropertyRef Name="PublishingHouseId" />
+            <PropertyRef Name="PublishingHouseName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="BookName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="BookSeriesId" Type="int" />
+          <Property Name="BookSeriesName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PublishingHouseId" Type="int" Nullable="false" />
+          <Property Name="PublishingHouseName" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Library.dbo.AuthorView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="AuthorView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Library.dbo.BookSeriesStatistic" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="BookSeriesStatistic">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="PublishingHouseId" />
+            <PropertyRef Name="PublishingHouseName" />
+            <PropertyRef Name="BookId" />
+            <PropertyRef Name="BookName" />
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="AuthorName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="PublishingHouseId" Type="int" Nullable="false" />
+          <Property Name="PublishingHouseName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="BookName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+          <Property Name="AuthorName" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Library.dbo.BookSeriesView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="BookSeriesView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="PublishingHouseId" />
+            <PropertyRef Name="PublishingHouseName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="PublishingHouseId" Type="int" Nullable="false" />
+          <Property Name="PublishingHouseName" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Library.dbo.BooksView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="BooksView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="PageNumber" />
+            <PropertyRef Name="BookSeriesId" />
+            <PropertyRef Name="PublishingHouseId" />
+            <PropertyRef Name="PublishingHouseName" />
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="AuthorName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="PageNumber" Type="int" Nullable="false" />
+          <Property Name="BookSeriesId" Type="int" Nullable="false" />
+          <Property Name="BookSeriesName" Type="nchar" MaxLength="100" />
+          <Property Name="PublishingHouseId" Type="int" Nullable="false" />
+          <Property Name="PublishingHouseName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+          <Property Name="AuthorName" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Library.dbo.PublishingHousesStatistic" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="PublishingHousesStatistic">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="BookId" />
+            <PropertyRef Name="BookName" />
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="AuthorName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="BookName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+          <Property Name="AuthorName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="BookSeriesId" Type="int" />
+          <Property Name="BookSeriesName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Library.dbo.PublishingHouseView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="PublishingHouseView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Book_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_BookSeries">
+          <End Role="BookSeries" Type="Self.BookSeries" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookSeries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="BookSeriesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_PublishingHouse">
+          <End Role="PublishingHouse" Type="Self.PublishingHouse" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PublishingHouse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="PublisherHouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookSeries_PublishingHouse">
+          <End Role="PublishingHouse" Type="Self.PublishingHouse" Multiplicity="1" />
+          <End Role="BookSeries" Type="Self.BookSeries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PublishingHouse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookSeries">
+              <PropertyRef Name="PublishingHouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище LibraryModelContainer">
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookSeries" EntityType="Self.BookSeries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublishingHouse" EntityType="Self.PublishingHouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuthorsStatistic" EntityType="Self.AuthorsStatistic" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AuthorsStatistic].[Id] AS [Id], 
+    [AuthorsStatistic].[Name] AS [Name], 
+    [AuthorsStatistic].[BookId] AS [BookId], 
+    [AuthorsStatistic].[BookName] AS [BookName], 
+    [AuthorsStatistic].[BookSeriesId] AS [BookSeriesId], 
+    [AuthorsStatistic].[BookSeriesName] AS [BookSeriesName], 
+    [AuthorsStatistic].[PublishingHouseId] AS [PublishingHouseId], 
+    [AuthorsStatistic].[PublishingHouseName] AS [PublishingHouseName]
+    FROM [dbo].[AuthorsStatistic] AS [AuthorsStatistic]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AuthorView" EntityType="Self.AuthorView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AuthorView].[Id] AS [Id], 
+    [AuthorView].[Name] AS [Name]
+    FROM [dbo].[AuthorView] AS [AuthorView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BookSeriesStatistic" EntityType="Self.BookSeriesStatistic" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BookSeriesStatistic].[Id] AS [Id], 
+    [BookSeriesStatistic].[Name] AS [Name], 
+    [BookSeriesStatistic].[PublishingHouseId] AS [PublishingHouseId], 
+    [BookSeriesStatistic].[PublishingHouseName] AS [PublishingHouseName], 
+    [BookSeriesStatistic].[BookId] AS [BookId], 
+    [BookSeriesStatistic].[BookName] AS [BookName], 
+    [BookSeriesStatistic].[AuthorId] AS [AuthorId], 
+    [BookSeriesStatistic].[AuthorName] AS [AuthorName]
+    FROM [dbo].[BookSeriesStatistic] AS [BookSeriesStatistic]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BookSeriesView" EntityType="Self.BookSeriesView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BookSeriesView].[Id] AS [Id], 
+    [BookSeriesView].[Name] AS [Name], 
+    [BookSeriesView].[PublishingHouseId] AS [PublishingHouseId], 
+    [BookSeriesView].[PublishingHouseName] AS [PublishingHouseName]
+    FROM [dbo].[BookSeriesView] AS [BookSeriesView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BooksView" EntityType="Self.BooksView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BooksView].[Id] AS [Id], 
+    [BooksView].[Name] AS [Name], 
+    [BooksView].[PageNumber] AS [PageNumber], 
+    [BooksView].[BookSeriesId] AS [BookSeriesId], 
+    [BooksView].[BookSeriesName] AS [BookSeriesName], 
+    [BooksView].[PublishingHouseId] AS [PublishingHouseId], 
+    [BooksView].[PublishingHouseName] AS [PublishingHouseName], 
+    [BooksView].[AuthorId] AS [AuthorId], 
+    [BooksView].[AuthorName] AS [AuthorName]
+    FROM [dbo].[BooksView] AS [BooksView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PublishingHousesStatistic" EntityType="Self.PublishingHousesStatistic" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PublishingHousesStatistic].[Id] AS [Id], 
+    [PublishingHousesStatistic].[Name] AS [Name], 
+    [PublishingHousesStatistic].[BookId] AS [BookId], 
+    [PublishingHousesStatistic].[BookName] AS [BookName], 
+    [PublishingHousesStatistic].[AuthorId] AS [AuthorId], 
+    [PublishingHousesStatistic].[AuthorName] AS [AuthorName], 
+    [PublishingHousesStatistic].[BookSeriesId] AS [BookSeriesId], 
+    [PublishingHousesStatistic].[BookSeriesName] AS [BookSeriesName]
+    FROM [dbo].[PublishingHousesStatistic] AS [PublishingHousesStatistic]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PublishingHouseView" EntityType="Self.PublishingHouseView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PublishingHouseView].[Id] AS [Id], 
+    [PublishingHouseView].[Name] AS [Name]
+    FROM [dbo].[PublishingHouseView] AS [PublishingHouseView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Book_Author" Association="Self.FK_Book_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_BookSeries" Association="Self.FK_Book_BookSeries">
+            <End Role="BookSeries" EntitySet="BookSeries" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_PublishingHouse" Association="Self.FK_Book_PublishingHouse">
+            <End Role="PublishingHouse" EntitySet="PublishingHouse" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookSeries_PublishingHouse" Association="Self.FK_BookSeries_PublishingHouse">
+            <End Role="PublishingHouse" EntitySet="PublishingHouse" />
+            <End Role="BookSeries" EntitySet="BookSeries" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EFLibraryDbContext" annotation:LazyLoadingEnabled="true" a:TypeAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+          <EntitySet Name="Authors" EntityType="LibraryModel.Author" />
+          <EntitySet Name="Books" EntityType="LibraryModel.Book" />
+          <EntitySet Name="BookSeries1" EntityType="LibraryModel.BookSerie" />
+          <EntitySet Name="PublishingHouses" EntityType="LibraryModel.PublishingHouse" />
+          <AssociationSet Name="FK_Book_Author" Association="LibraryModel.FK_Book_Author">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_BookSeries" Association="LibraryModel.FK_Book_BookSeries">
+            <End Role="BookSery" EntitySet="BookSeries1" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_PublishingHouse" Association="LibraryModel.FK_Book_PublishingHouse">
+            <End Role="PublishingHouse" EntitySet="PublishingHouses" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookSeries_PublishingHouse" Association="LibraryModel.FK_BookSeries_PublishingHouse">
+            <End Role="PublishingHouse" EntitySet="PublishingHouses" />
+            <End Role="BookSery" EntitySet="BookSeries1" />
+          </AssociationSet>
+          <EntitySet Name="AuthorsStatistics" EntityType="LibraryModel.AuthorsStatistic" />
+          <EntitySet Name="AuthorViews" EntityType="LibraryModel.AuthorView" />
+          <EntitySet Name="BookSeriesStatistics" EntityType="LibraryModel.BookSeriesStatistic" />
+          <EntitySet Name="BookSeriesViews" EntityType="LibraryModel.BookSeriesView" />
+          <EntitySet Name="BooksViews" EntityType="LibraryModel.BooksView" />
+          <EntitySet Name="PublishingHousesStatistics" EntityType="LibraryModel.PublishingHousesStatistic" />
+          <EntitySet Name="PublishingHouseViews" EntityType="LibraryModel.PublishingHouseView" />
+          </EntityContainer>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="LibraryModel.FK_Book_Author" FromRole="Author" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="PageNumber" Type="Int32" Nullable="false" />
+          <Property Name="BookSeriesId" Type="Int32" Nullable="false" />
+          <Property Name="PublisherHouseId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="LibraryModel.FK_Book_Author" FromRole="Book" ToRole="Author" />
+          <NavigationProperty Name="BookSery" Relationship="LibraryModel.FK_Book_BookSeries" FromRole="Book" ToRole="BookSery" />
+          <NavigationProperty Name="PublishingHouse" Relationship="LibraryModel.FK_Book_PublishingHouse" FromRole="Book" ToRole="PublishingHouse" />
+        </EntityType>
+        <EntityType Name="BookSerie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="PublishingHouseId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="LibraryModel.FK_Book_BookSeries" FromRole="BookSery" ToRole="Book" />
+          <NavigationProperty Name="PublishingHouse" Relationship="LibraryModel.FK_BookSeries_PublishingHouse" FromRole="BookSery" ToRole="PublishingHouse" />
+        </EntityType>
+        <EntityType Name="PublishingHouse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="LibraryModel.FK_Book_PublishingHouse" FromRole="PublishingHouse" ToRole="Book" />
+          <NavigationProperty Name="BookSeries" Relationship="LibraryModel.FK_BookSeries_PublishingHouse" FromRole="PublishingHouse" ToRole="BookSery" />
+        </EntityType>
+        <Association Name="FK_Book_Author">
+          <End Type="LibraryModel.Author" Role="Author" Multiplicity="1" />
+          <End Type="LibraryModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_BookSeries">
+          <End Type="LibraryModel.BookSerie" Role="BookSery" Multiplicity="1" />
+          <End Type="LibraryModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookSery">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="BookSeriesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_PublishingHouse">
+          <End Type="LibraryModel.PublishingHouse" Role="PublishingHouse" Multiplicity="1" />
+          <End Type="LibraryModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PublishingHouse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="PublisherHouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookSeries_PublishingHouse">
+          <End Type="LibraryModel.PublishingHouse" Role="PublishingHouse" Multiplicity="1" />
+          <End Type="LibraryModel.BookSerie" Role="BookSery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PublishingHouse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookSery">
+              <PropertyRef Name="PublishingHouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AuthorsStatistic">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="BookId" />
+            <PropertyRef Name="BookName" />
+            <PropertyRef Name="PublishingHouseId" />
+            <PropertyRef Name="PublishingHouseName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="BookName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="BookSeriesId" Type="Int32" />
+          <Property Name="BookSeriesName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PublishingHouseId" Type="Int32" Nullable="false" />
+          <Property Name="PublishingHouseName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AuthorView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BookSeriesStatistic">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="PublishingHouseId" />
+            <PropertyRef Name="PublishingHouseName" />
+            <PropertyRef Name="BookId" />
+            <PropertyRef Name="BookName" />
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="AuthorName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="PublishingHouseId" Type="Int32" Nullable="false" />
+          <Property Name="PublishingHouseName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="BookName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BookSeriesView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="PublishingHouseId" />
+            <PropertyRef Name="PublishingHouseName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="PublishingHouseId" Type="Int32" Nullable="false" />
+          <Property Name="PublishingHouseName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BooksView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="PageNumber" />
+            <PropertyRef Name="BookSeriesId" />
+            <PropertyRef Name="PublishingHouseId" />
+            <PropertyRef Name="PublishingHouseName" />
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="AuthorName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="PageNumber" Type="Int32" Nullable="false" />
+          <Property Name="BookSeriesId" Type="Int32" Nullable="false" />
+          <Property Name="BookSeriesName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="PublishingHouseId" Type="Int32" Nullable="false" />
+          <Property Name="PublishingHouseName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PublishingHousesStatistic">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="BookId" />
+            <PropertyRef Name="BookName" />
+            <PropertyRef Name="AuthorId" />
+            <PropertyRef Name="AuthorName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="BookName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="BookSeriesId" Type="Int32" />
+          <Property Name="BookSeriesName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PublishingHouseView">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище LibraryModelContainer" CdmEntityContainer="EFLibraryDbContext">
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="LibraryModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="LibraryModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="PublisherHouseId" ColumnName="PublisherHouseId" />
+                <ScalarProperty Name="BookSeriesId" ColumnName="BookSeriesId" />
+                <ScalarProperty Name="PageNumber" ColumnName="PageNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookSeries1">
+            <EntityTypeMapping TypeName="LibraryModel.BookSerie">
+              <MappingFragment StoreEntitySet="BookSeries">
+                <ScalarProperty Name="PublishingHouseId" ColumnName="PublishingHouseId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublishingHouses">
+            <EntityTypeMapping TypeName="LibraryModel.PublishingHouse">
+              <MappingFragment StoreEntitySet="PublishingHouse">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthorsStatistics">
+            <EntityTypeMapping TypeName="LibraryModel.AuthorsStatistic">
+              <MappingFragment StoreEntitySet="AuthorsStatistic">
+                <ScalarProperty Name="PublishingHouseName" ColumnName="PublishingHouseName" />
+                <ScalarProperty Name="PublishingHouseId" ColumnName="PublishingHouseId" />
+                <ScalarProperty Name="BookSeriesName" ColumnName="BookSeriesName" />
+                <ScalarProperty Name="BookSeriesId" ColumnName="BookSeriesId" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthorViews">
+            <EntityTypeMapping TypeName="LibraryModel.AuthorView">
+              <MappingFragment StoreEntitySet="AuthorView">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookSeriesStatistics">
+            <EntityTypeMapping TypeName="LibraryModel.BookSeriesStatistic">
+              <MappingFragment StoreEntitySet="BookSeriesStatistic">
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="PublishingHouseName" ColumnName="PublishingHouseName" />
+                <ScalarProperty Name="PublishingHouseId" ColumnName="PublishingHouseId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookSeriesViews">
+            <EntityTypeMapping TypeName="LibraryModel.BookSeriesView">
+              <MappingFragment StoreEntitySet="BookSeriesView">
+                <ScalarProperty Name="PublishingHouseName" ColumnName="PublishingHouseName" />
+                <ScalarProperty Name="PublishingHouseId" ColumnName="PublishingHouseId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BooksViews">
+            <EntityTypeMapping TypeName="LibraryModel.BooksView">
+              <MappingFragment StoreEntitySet="BooksView">
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="PublishingHouseName" ColumnName="PublishingHouseName" />
+                <ScalarProperty Name="PublishingHouseId" ColumnName="PublishingHouseId" />
+                <ScalarProperty Name="BookSeriesName" ColumnName="BookSeriesName" />
+                <ScalarProperty Name="BookSeriesId" ColumnName="BookSeriesId" />
+                <ScalarProperty Name="PageNumber" ColumnName="PageNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublishingHousesStatistics">
+            <EntityTypeMapping TypeName="LibraryModel.PublishingHousesStatistic">
+              <MappingFragment StoreEntitySet="PublishingHousesStatistic">
+                <ScalarProperty Name="BookSeriesName" ColumnName="BookSeriesName" />
+                <ScalarProperty Name="BookSeriesId" ColumnName="BookSeriesId" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublishingHouseViews">
+            <EntityTypeMapping TypeName="LibraryModel.PublishingHouseView">
+              <MappingFragment StoreEntitySet="PublishingHouseView">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

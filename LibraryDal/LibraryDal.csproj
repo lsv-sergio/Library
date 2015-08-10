@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8DDF5F45-2005-4932-8F41-2CDC20E5E6BF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibraryDal</RootNamespace>
+    <AssemblyName>LibraryDal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EF\Author.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\AuthorsStatistic.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\AuthorView.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Book.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\BookSerie.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\BookSeriesStatistic.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\BookSeriesView.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\BooksView.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\EFLibraryModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFLibraryModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\EFLibraryModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\EFLibraryModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFLibraryModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\IDbContext.cs" />
+    <Compile Include="EF\Partial\AuthorsStatistic.cs" />
+    <Compile Include="EF\Partial\BookSeriesStatistic.cs" />
+    <Compile Include="EF\Partial\PublishingHousesStatistic.cs" />
+    <Compile Include="EF\Partial\PublishingHouseView.cs" />
+    <Compile Include="EF\Partial\BooksView.cs" />
+    <Compile Include="EF\Partial\BookSeriesView.cs" />
+    <Compile Include="EF\Partial\AuthorView.cs" />
+    <Compile Include="EF\PublishingHouse.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PublishingHousesStatistic.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PublishingHouseView.cs">
+      <DependentUpon>EFLibraryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\CommandsDal\AuthorDalCommands.cs" />
+    <Compile Include="Infrastructure\CommandsDal\BookDalCommands.cs" />
+    <Compile Include="Infrastructure\CommandsDal\BookSeriesDalCommands.cs" />
+    <Compile Include="Infrastructure\CommandsDal\Abstract\DalCommand.cs" />
+    <Compile Include="Infrastructure\CommandsDal\IAuthorDalCommands.cs" />
+    <Compile Include="Infrastructure\CommandsDal\IBookDalCommands.cs" />
+    <Compile Include="Infrastructure\CommandsDal\IBookSeriesDalCommands.cs" />
+    <Compile Include="Infrastructure\CommandsDal\Abstract\IDalCommand.cs" />
+    <Compile Include="Infrastructure\CommandsDal\IPublishingHouse.cs" />
+    <Compile Include="Infrastructure\CommandsDal\PublishingHouseDalCommands.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Factory\IDalQueryFactory.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Factory\DalQueryFactory.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Statistics\AuthorsStatisticDal.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Statistics\BookSeriesStatisticDal.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Statistics\IAuthorsStatisticDal.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Statistics\IBookSeriesStatisticDal.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Statistics\IPublishingHousesStatisticDal.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Statistics\PublishingHousesStatisticDal.cs" />
+    <Compile Include="Infrastructure\UnitOfWork\ICommandContext.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Views\IPublishingHouseDalQuery.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Abstract\IDalQuery.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Views\PublishingHouseDalQuery.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Views\AuthorDalQuery.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Views\BookDalQuery.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Views\BookSerieDalQuery.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Views\IAuthorDalQuery.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Views\IBookDalQuery.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Views\IBookSerieDalQuery.cs" />
+    <Compile Include="Infrastructure\QueriesDal\Abstract\DalQuery.cs" />
+    <Compile Include="Infrastructure\UnitOfWork\IQueryContext.cs" />
+    <Compile Include="EF\Partial\Author.cs" />
+    <Compile Include="EF\Partial\Book.cs" />
+    <Compile Include="EF\Partial\BookSerie.cs" />
+    <Compile Include="EF\IBaseDal.cs" />
+    <Compile Include="EF\Partial\PublishingHouse.cs" />
+    <Compile Include="Infrastructure\UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="EF\EFLibraryModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EFLibraryModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EF\EFLibraryModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EFLibraryModel.edmx</DependentUpon>
+      <LastGenOutput>EFLibraryModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EF\EFLibraryModel.edmx.diagram">
+      <DependentUpon>EFLibraryModel.edmx</DependentUpon>
+    </None>
+    <None Include="EF\EFLibraryModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EFLibraryModel.edmx</DependentUpon>
+      <LastGenOutput>EFLibraryModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

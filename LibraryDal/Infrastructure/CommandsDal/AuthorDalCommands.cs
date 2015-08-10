@@ -1,0 +1,19 @@
+﻿using LibraryDal.EF;
+using LibraryDal.Infrastructure.UnitOfWork;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LibraryDal.Infrastructure.CommandsDal
+{
+    public class AuthorDalCommands : DalCommand<Author>, IAuthorDalCommands
+    {
+        public AuthorDalCommands(ICommandContext UoW)
+            : base(UoW)
+        {
+
+        }
+    }
+}

@@ -1,0 +1,36 @@
+﻿@model Library.Models.PublishingHouseModel
+
+@using (Html.BeginForm("Edit", "PublishingHouse", new { id = Model.Id }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <div class="col-md-offset-3">
+            @{ var title = "Редактирование издательства";
+             if (Model.Id == 0)
+             {
+                 title = "Добавление издательства";
+             }
+            }
+            <h4>@title</h4>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control " } )
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+                @Html.ActionLink("Отмена", "Index", null, new { @class="col-md-offset-1 btn btn-default" })
+            </div>
+        </div>
+    </div>
+}

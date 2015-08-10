@@ -1,0 +1,22 @@
+E:\NET Poject\Library\LibraryDal\bin\Debug\LibraryDal.dll.config
+E:\NET Poject\Library\LibraryDal\bin\Debug\LibraryDal.dll
+E:\NET Poject\Library\LibraryDal\bin\Debug\LibraryDal.pdb
+E:\NET Poject\Library\LibraryDal\bin\Debug\EntityFramework.dll
+E:\NET Poject\Library\LibraryDal\bin\Debug\EntityFramework.SqlServer.dll
+E:\NET Poject\Library\LibraryDal\bin\Debug\EntityFramework.xml
+E:\NET Poject\Library\LibraryDal\bin\Debug\EntityFramework.SqlServer.xml
+E:\NET Poject\Library\LibraryDal\bin\Debug\ru\EntityFramework.resources.dll
+E:\NET Poject\Library\LibraryDal\obj\Debug\LibraryDal.csprojResolveAssemblyReference.cache
+E:\NET Poject\Library\LibraryDal\obj\Debug\LibraryDal.dll
+E:\NET Poject\Library\LibraryDal\obj\Debug\LibraryDal.pdb
+D:\netProject\Library\LibraryDal\bin\Debug\LibraryDal.dll.config
+D:\netProject\Library\LibraryDal\bin\Debug\LibraryDal.dll
+D:\netProject\Library\LibraryDal\bin\Debug\LibraryDal.pdb
+D:\netProject\Library\LibraryDal\bin\Debug\EntityFramework.dll
+D:\netProject\Library\LibraryDal\bin\Debug\EntityFramework.SqlServer.dll
+D:\netProject\Library\LibraryDal\bin\Debug\EntityFramework.xml
+D:\netProject\Library\LibraryDal\bin\Debug\EntityFramework.SqlServer.xml
+D:\netProject\Library\LibraryDal\bin\Debug\ru\EntityFramework.resources.dll
+D:\netProject\Library\LibraryDal\obj\Debug\LibraryDal.dll
+D:\netProject\Library\LibraryDal\obj\Debug\LibraryDal.pdb
+D:\netProject\Library\LibraryDal\obj\Debug\LibraryDal.csprojResolveAssemblyReference.cache

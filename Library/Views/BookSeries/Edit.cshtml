@@ -1,0 +1,50 @@
+﻿@model BookSeriesEditModel
+@using Library.Models;
+
+@using (Html.BeginForm("Edit", "BookSeries", new { id = Model.Id }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="row">
+            @{ var title = "Редактирование книжной серии";
+             if (Model.Id == 0)
+             {
+                 title = "Добавление книжной серии";
+             }
+            }
+            <h4>@title</h4>
+            <hr />
+        </div>
+        <div class="text-danger">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-9">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.PublishingHouseId, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.PublishingHouseId, Model.PublishingHousesList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PublishingHouseId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-12">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+                @Html.ActionLink("Отмена", "Index", null, new { @class = "col-md-offset-1 btn btn-default" })
+            </div>
+        </div>
+    </div>
+}

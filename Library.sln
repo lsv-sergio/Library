@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Web
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{D8424EE8-4451-4F3C-BD8E-9A663724CB08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Tests", "Library.Tests\Library.Tests.csproj", "{341B7358-8D68-45A7-B473-B228FBE32C9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDal", "LibraryDal\LibraryDal.csproj", "{8DDF5F45-2005-4932-8F41-2CDC20E5E6BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDomain", "LibraryDomain\LibraryDomain.csproj", "{531636AC-0E69-4052-A443-C63C3CD6C2FB}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://lsv-sergio.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Library.Tests\\Library.Tests.csproj
+		SccProjectName1 = Library.Tests
+		SccLocalPath1 = Library.Tests
+		SccProjectUniqueName2 = Library\\Library.csproj
+		SccProjectName2 = Library
+		SccLocalPath2 = Library
+		SccProjectUniqueName3 = LibraryDal\\LibraryDal.csproj
+		SccProjectName3 = LibraryDal
+		SccLocalPath3 = LibraryDal
+		SccProjectUniqueName4 = LibraryDomain\\LibraryDomain.csproj
+		SccProjectName4 = LibraryDomain
+		SccLocalPath4 = LibraryDomain
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8424EE8-4451-4F3C-BD8E-9A663724CB08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8424EE8-4451-4F3C-BD8E-9A663724CB08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8424EE8-4451-4F3C-BD8E-9A663724CB08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8424EE8-4451-4F3C-BD8E-9A663724CB08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{341B7358-8D68-45A7-B473-B228FBE32C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{341B7358-8D68-45A7-B473-B228FBE32C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{341B7358-8D68-45A7-B473-B228FBE32C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{341B7358-8D68-45A7-B473-B228FBE32C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DDF5F45-2005-4932-8F41-2CDC20E5E6BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DDF5F45-2005-4932-8F41-2CDC20E5E6BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DDF5F45-2005-4932-8F41-2CDC20E5E6BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DDF5F45-2005-4932-8F41-2CDC20E5E6BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{531636AC-0E69-4052-A443-C63C3CD6C2FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{531636AC-0E69-4052-A443-C63C3CD6C2FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{531636AC-0E69-4052-A443-C63C3CD6C2FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{531636AC-0E69-4052-A443-C63C3CD6C2FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

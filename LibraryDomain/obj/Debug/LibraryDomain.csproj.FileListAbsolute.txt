@@ -1,0 +1,16 @@
+E:\NET Poject\Library\LibraryDomain\obj\Debug\LibraryDomain.csprojResolveAssemblyReference.cache
+E:\NET Poject\Library\LibraryDomain\obj\Debug\LibraryDomain.dll
+E:\NET Poject\Library\LibraryDomain\obj\Debug\LibraryDomain.pdb
+E:\NET Poject\Library\LibraryDomain\bin\Debug\LibraryDomain.dll
+E:\NET Poject\Library\LibraryDomain\bin\Debug\LibraryDomain.pdb
+E:\NET Poject\Library\LibraryDomain\bin\Debug\LibraryDal.dll
+E:\NET Poject\Library\LibraryDomain\bin\Debug\LibraryDal.pdb
+D:\netProject\Library\LibraryDomain\bin\Debug\LibraryDomain.dll
+D:\netProject\Library\LibraryDomain\bin\Debug\LibraryDomain.pdb
+D:\netProject\Library\LibraryDomain\bin\Debug\EntityFramework.dll
+D:\netProject\Library\LibraryDomain\bin\Debug\LibraryDal.dll
+D:\netProject\Library\LibraryDomain\bin\Debug\LibraryDal.pdb
+D:\netProject\Library\LibraryDomain\bin\Debug\EntityFramework.xml
+D:\netProject\Library\LibraryDomain\obj\Debug\LibraryDomain.csprojResolveAssemblyReference.cache
+D:\netProject\Library\LibraryDomain\obj\Debug\LibraryDomain.dll
+D:\netProject\Library\LibraryDomain\obj\Debug\LibraryDomain.pdb
