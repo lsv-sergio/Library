@@ -164,6 +164,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -197,6 +199,19 @@
     <Content Include="Views\Books\Details.cshtml" />
     <Content Include="Views\BookSeries\Details.cshtml" />
     <Content Include="Views\PublishingHouse\Details.cshtml" />
+    <Content Include="Views\Books\PartialIndex.cshtml" />
+    <Content Include="Views\Authors\PartialIndex.cshtml" />
+    <Content Include="Views\BookSeries\PartialIndex.cshtml" />
+    <Content Include="Views\PublishingHouse\PartialIndex.cshtml" />
+    <Content Include="Views\Books\PartialDetails.cshtml" />
+    <Content Include="Views\Books\PartialEdit.cshtml" />
+    <Content Include="Views\Books\PartialFind.cshtml" />
+    <Content Include="Views\Authors\PartialDetails.cshtml" />
+    <Content Include="Views\Authors\PartialEdit.cshtml" />
+    <Content Include="Views\BookSeries\PartialDetails.cshtml" />
+    <Content Include="Views\BookSeries\PartialEdit.cshtml" />
+    <Content Include="Views\PublishingHouse\PartialDetails.cshtml" />
+    <Content Include="Views\PublishingHouse\PartialEdit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

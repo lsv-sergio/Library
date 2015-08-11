@@ -31,15 +31,19 @@ namespace Library.Controllers
         public ActionResult Index()
         {
             if (_publishingHouseQueries == null)
-                return View("Error");
+                if (Request.IsAjaxRequest())
+                    return PartialView("Error");
+                else
+                    return View("Error");
             IEnumerable<IPublishingHouseDomainView> publishingHouseViewsList = _publishingHouseViewQueries.GetAll();
             IEnumerable<PublishingHouseModel> model = new List<PublishingHouseModel>();
             if (publishingHouseViewsList.Count() != 0)
                 model = publishingHouseViewsList.Select(x => ViewToListModel(x)).OrderBy(x => x.Name).AsEnumerable();
 
             ViewBag.Title = "Список издательств";
-
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialIndex", model);
+            return View("Index", model);
         }
 
         [HttpGet]
@@ -56,7 +60,9 @@ namespace Library.Controllers
 
             ViewBag.Title = "Изменение издательства";
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
+            return View("Edit", model);
         }
 
         [HttpGet]
@@ -73,7 +79,9 @@ namespace Library.Controllers
 
             ViewBag.Title = "Статистика издательства";
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialDetails", model);
+            return View("Details", model);
         }
 
         [HttpPost]
@@ -82,7 +90,9 @@ namespace Library.Controllers
             if (_publishingHouseQueries == null)
             {
                 ModelState.AddModelError("ErrorCreateQueries", "Ошибка создания запроса");
-                return View(model);
+                if (Request.IsAjaxRequest())
+                    return PartialView("PartialEdit", model);
+                return View("Edit", model);
             }
             if (ModelState.IsValid)
             {
@@ -95,7 +105,9 @@ namespace Library.Controllers
                 if (publishingHouseDomain == null)
                 {
                     ModelState.AddModelError("ErrorCreateDomain", "Ошибка создания обекта");
-                    return View(model);
+                    if (Request.IsAjaxRequest())
+                        return PartialView("PartialEdit", model);
+                    return View("Edit", model);
                 }
                 if (!publishingHouseDomain.Name.Trim().ToLower().Equals(model.Name.Trim().ToLower()))
                     publishingHouseDomain.SetName(model.Name.Trim());
@@ -106,7 +118,9 @@ namespace Library.Controllers
 
             ViewBag.Title = "Изменение издательства";
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
+            return View("Edit", model);
         }
 
         public ActionResult Delete(int Id)
@@ -129,6 +143,8 @@ namespace Library.Controllers
 
             ViewBag.Title = "Добавление издательства";
 
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
             return View("Edit", model);
         }
 

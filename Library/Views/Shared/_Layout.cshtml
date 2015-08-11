@@ -19,33 +19,34 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Тестовая библиотека", "", "", new { area = "" }, new { @class = "navbar-brand" })
+                @Ajax.ActionLink("Тестовая библиотека", "", "", new { area = "" }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Книги", "Index", "Books")</li>
-                    <li>@Html.ActionLink("Авторы", "Index", "Authors")</li>
-                    <li>@Html.ActionLink("Книжные серии", "Index", "BookSeries")</li>
-                    <li>@Html.ActionLink("Издательства", "Index", "PublishingHouse")</li>
-                    <li>@Html.ActionLink("Поиск", "Find", "Books")</li>
-</div>
-</li>
+                    <li>@Ajax.ActionLink("Книги", "Index","Books", new AjaxOptions() { UpdateTargetId="ContentBody", InsertionMode = InsertionMode.Replace, HttpMethod = "GET"})</li>
+                    <li>@Ajax.ActionLink("Авторы", "Index", "Authors", new AjaxOptions() { UpdateTargetId = "ContentBody", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" })</li>
+                    <li>@Ajax.ActionLink("Книжные серии", "Index", "BookSeries", new AjaxOptions() { UpdateTargetId = "ContentBody", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" })</li>
+                    <li>@Ajax.ActionLink("Издательства", "Index", "PublishingHouse", new AjaxOptions() { UpdateTargetId = "ContentBody", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" })</li>
+                    <li>@Ajax.ActionLink("Поиск", "Find", "Books", new AjaxOptions() { UpdateTargetId = "ContentBody", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" })</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
-        <div class="col-md-12">
+        <div class="col-md-12" id="ContentBody">
             @RenderBody()
         </div>
         <hr />
-        @*<footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
-        </footer>*@
+        <footer>
+            <p>&copy; - lsv.sergio@gmail.com @DateTime.Now.Year</p>
+        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryajax")
     @Scripts.Render("~/bundles/bootstrap")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

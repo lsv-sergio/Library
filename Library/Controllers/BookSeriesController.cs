@@ -32,15 +32,19 @@ namespace Library.Controllers
         {
             //if (_bookSeriesQueries == null)
             if (_viewQueries == null)
-                return View("Error");
+                if (Request.IsAjaxRequest())
+                    return PartialView("Error");
+                else
+                    return View("Error");
             IEnumerable<IBookSeriesDomainView> bookSeriesViewsList = _viewQueries.GetAll();
             IEnumerable<BookSeriesListModel> model = new List<BookSeriesListModel>();
             if (bookSeriesViewsList.Count() != 0)
                 model = bookSeriesViewsList.Select(x => ViewToListModel(x)).OrderBy(x => x.Name).AsEnumerable();
 
             ViewBag.Title = "Список серий книг";
-
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialIndex", model);
+            return View("Index", model);
         }
 
         [HttpGet]
@@ -57,7 +61,9 @@ namespace Library.Controllers
 
             ViewBag.Title = "Изменение серии книг";
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
+            return View("Edit", model);
         }
 
         [HttpGet]
@@ -74,7 +80,9 @@ namespace Library.Controllers
 
             ViewBag.Title = "Статистика серии книг";
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialDetails", model);
+            return View("Details", model);
         }
 
         [HttpPost]
@@ -83,7 +91,9 @@ namespace Library.Controllers
             if (_domainQueries == null)
             {
                 ModelState.AddModelError("ErrorCreateQueries", "Ошибка создания запроса");
-                return View(model);
+                if (Request.IsAjaxRequest())
+                    return PartialView("PartialEdit", model);
+                return View("Edit", model);
             }
             if (ModelState.IsValid)
             {
@@ -111,7 +121,9 @@ namespace Library.Controllers
             ViewBag.Title = "Изменение серии книг";
             model = CompleetModel(model);
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
+            return View("Edit", model);
         }
 
         [HttpGet]
@@ -137,6 +149,8 @@ namespace Library.Controllers
 
             ViewBag.Title = "Добавление серии книг";
 
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
             return View("Edit", model);
         }
 

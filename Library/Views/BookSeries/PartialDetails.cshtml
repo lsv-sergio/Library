@@ -1,0 +1,62 @@
+﻿@model BookSeriesDetailsModel
+@using Library.Models;
+
+@{
+    Layout = null;
+}
+
+<div class="row">
+
+    <div class="col-md-offset-3">
+        <h3>Информация об книжной серии</h3>
+    </div>
+    <hr />
+    <div class="row form-group">
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-9">
+            <h4> @Html.DisplayFor(model => model.Name, new { @class = "control-label" })</h4>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.PublishingHouse, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-9">
+            @Ajax.ActionLink(Model.PublishingHouse.Name, "Details", "PublishingHouse", new { id = @Model.PublishingHouse.Id }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { @class = "btn btn-default" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label class="control-label">Книги серии</label>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            @foreach (var book in Model.Books)
+            {
+                @Ajax.ActionLink(book.Name.Trim(), "Details", "Books", new { id = @book.Id }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { @class = "btn btn-default margin-left" })
+            }
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label class="control-label">Авторы серии</label>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            @foreach (var author in Model.Authors)
+            {
+                @Ajax.ActionLink(author.Name.Trim(), "Details", "Authors", new { id = @author.Id }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { @class = "btn btn-default margin-left" })
+            }
+        </div>
+    </div>
+    <div class="row form-group ">
+        @Ajax.ActionLink("Изменить серию", "Edit", new { id = Model.Id }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { @class = "btn btn-primary" })
+        @Ajax.ActionLink("Cписок серий", "Index", null, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { @class = "btn btn-default col-md-offset-1" })
+    </div>
+</div>

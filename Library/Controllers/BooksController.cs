@@ -30,15 +30,19 @@ namespace Library.Controllers
         public ActionResult Index()
         {
             if (_bookQueries == null)
-                return View("Error");
+                if (Request.IsAjaxRequest())
+                    return PartialView("Error");
+                else
+                    return View("Error");
             IEnumerable<IBookDomainView> bookDomainsList = _bookViewQueries.GetAll();
             IEnumerable<BooksListModel> model = new List<BooksListModel>();
             if (bookDomainsList.Count() != 0)
                 model = bookDomainsList.Select(x => ViewToListModel(x)).OrderBy(x => x.Name).ToList();
 
             ViewBag.Title = "Список книг";
-
-            return View(model);
+            if(Request.IsAjaxRequest())
+                return PartialView("PartialIndex",model);
+            return View("Index", model);
         }
 
         [HttpGet]
@@ -54,7 +58,9 @@ namespace Library.Controllers
             BookEditModel model = DomainToEditModel(bookDomain);
 
             ViewBag.Title = "Изменение книги";
-            return View(model);
+            if(Request.IsAjaxRequest())
+                return PartialView("PartialEdit",model);
+            return View("Edit",model);
         }
 
         [HttpPost]
@@ -63,7 +69,9 @@ namespace Library.Controllers
             if (_bookQueries == null)
             {
                 ModelState.AddModelError("ErrorCreateQueries", "Ошибка создания запроса");
-                return View(model);
+                if (Request.IsAjaxRequest())
+                    return PartialView("PartialEdit", model);
+                return View("Edit", model);
             }
             if (ModelState.IsValid)
             {
@@ -83,7 +91,10 @@ namespace Library.Controllers
                     if (bookDomain == null)
                     {
                         ModelState.AddModelError("ErrorFindDomain", "Объект с кодом " + model.Id.ToString() + " - не найден");
-                        return View(model);
+                        if (Request.IsAjaxRequest())
+                            return PartialView("PartialEdit", model);
+                        return View("Edit", model);
+
                     }
                     if (!bookDomain.Name.Trim().ToLower().Equals(model.Name.Trim().ToLower()))
                         bookDomain.SetName(model.Name.Trim());
@@ -109,7 +120,10 @@ namespace Library.Controllers
 
             model = CompleetEditModel(model);
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
+            return View("Edit", model);
+
         }
 
         [HttpGet]
@@ -120,14 +134,19 @@ namespace Library.Controllers
             model.AllPublishingHouses = GetPublishingHousesList(0);
             model.AllBookSeries = new List<SelectListItem>() { new SelectListItem() { Text = "Без серии", Value = "0", Selected = true } };
             ViewBag.Title = "Поиск книги";
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialFind", model);
+            return View("Find", model);
         }
 
         [HttpPost]
         public ActionResult Find(BookFindModel SearchModel)
         {
             if (_bookQueries == null)
-                return View("Error");
+                if (Request.IsAjaxRequest())
+                    return PartialView("Error");
+                else
+                    return View("Error");
             IEnumerable<IBookDomainView> filteredList = _bookViewQueries.GetAll();
             IList<Func<IBookDomainView, bool>> filters = new List<Func<IBookDomainView, bool>>();
 
@@ -149,6 +168,8 @@ namespace Library.Controllers
             var model = filteredList.Select(x => ViewToListModel(x)).OrderBy(x => x.Name).ToList();
             ViewBag.Title = "Найденные книги";
 
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialIndex", model);
             return View("Index", model);
         }
 
@@ -166,7 +187,9 @@ namespace Library.Controllers
 
             ViewBag.Title = "Статистика книги";
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialDetails", model);
+            return View("Details", model);
         }
 
         [HttpGet]
@@ -191,6 +214,8 @@ namespace Library.Controllers
 
             ViewBag.Title = "Добавление книги";
 
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
             return View("Edit", model);
         }
 

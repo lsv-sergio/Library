@@ -21,7 +21,7 @@ namespace Library.Controllers
         IAuthorViewQueries _authorViewQueries;
 
         public AuthorsController(IAuthorDomainQueries AuthorDomainQueries, IAuthorViewQueries AuthorViewQueries, ILinkFactory LinkFactory)
-            :base(LinkFactory)
+            : base(LinkFactory)
         {
             _authorDomainQueries = AuthorDomainQueries;
             _authorViewQueries = AuthorViewQueries;
@@ -31,13 +31,18 @@ namespace Library.Controllers
         public ActionResult Index()
         {
             if (_authorDomainQueries == null)
-                return View("Error");
+                if (Request.IsAjaxRequest())
+                    return PartialView("Error");
+                else
+                    return View("Error");
             IEnumerable<IAuthorDomainView> authorDomainsList = _authorViewQueries.GetAll();
             IEnumerable<AuthorModel> model = new List<AuthorModel>();
             if (authorDomainsList.Count() != 0)
                 model = authorDomainsList.Select(x => ViewToListModel(x)).OrderBy(x => x.Name).AsEnumerable();
             ViewBag.Title = "Список авторов";
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialIndex", model);
+            return View("Index", model);
         }
 
         [HttpGet]
@@ -55,7 +60,9 @@ namespace Library.Controllers
 
             ViewBag.Title = "Изменение автора";
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
+            return View("Edit", model);
         }
 
         [HttpPost]
@@ -64,7 +71,9 @@ namespace Library.Controllers
             if (_authorDomainQueries == null)
             {
                 ModelState.AddModelError("ErrorCreateQueries", "Ошибка создания запроса");
-                return View(model);
+                if (Request.IsAjaxRequest())
+                    return PartialView("PartialEdit", model);
+                return View("Edit", model);
             }
             if (ModelState.IsValid)
             {
@@ -77,7 +86,9 @@ namespace Library.Controllers
                     if (authorDomain == null)
                     {
                         ModelState.AddModelError("ErrorFindDomain", "Автор с id = " + model.Id.ToString() + " - не найден");
-                        return View(model);
+                        if (Request.IsAjaxRequest())
+                            return PartialView("PartialEdit", model);
+                        return View("Edit", model);
                     }
                 }
                 if (!authorDomain.Name.Trim().ToLower().Equals(model.Name.Trim().ToLower()))
@@ -90,7 +101,7 @@ namespace Library.Controllers
 
             ViewBag.Title = "Изменение автора";
 
-            return View(model);
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -104,10 +115,12 @@ namespace Library.Controllers
                 return Index();
 
             AuthorDetailsModel model = DomainToDetailModel(authorDomain);
-                
+
             ViewBag.Title = "Статистика автора";
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialDetails", model);
+            return View("Details", model);
         }
 
         [HttpGet]
@@ -132,6 +145,8 @@ namespace Library.Controllers
 
             ViewBag.Title = "Добавление автора";
 
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
             return View("Edit", model);
         }
 
