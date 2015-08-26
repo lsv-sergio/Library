@@ -8,5 +8,6 @@ namespace LibraryDomain.Queries.ViewsQueries
 {
     public interface IAuthorViewQueries : IViewQueries<IAuthorDomainView>
     {
+        IAuthorDomainView MakeView(int Id, string Name);
     }
 }

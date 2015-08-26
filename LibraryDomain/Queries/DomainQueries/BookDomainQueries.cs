@@ -13,7 +13,7 @@ namespace LibraryDomain.Queries.DomainQueries
     public class BookDomainQueries : BaseDomainQueries<BooksView, IBookDomain>, IBookDomainQueries
     {
 
-        public BookDomainQueries(IDalQueryFactory QueryFactory, ILinkFactory LinkFactory, IBookCommands BookCommands)
+        public BookDomainQueries(IDalQueryFactory QueryFactory, ILinkFacade LinkFactory, IBookCommands BookCommands)
             : base(QueryFactory, LinkFactory, BookCommands)
         {
             if (QueryFactory != null)
@@ -30,7 +30,7 @@ namespace LibraryDomain.Queries.DomainQueries
             return new BookDomain(Id, Name, PageCount, Author, BookSeries, PublishingHouse, _domainCommands);
         }
 
-        public IBookDomain Create()
+        public override IBookDomain Create()
         {
             return Create(0, "", 0, null, null, null);
         }
@@ -44,9 +44,9 @@ namespace LibraryDomain.Queries.DomainQueries
             IBookSeriesLink bookSeries = null;
             IPublishingHouseLink publishingHouse = null;
 
-            author = _linkFactory.CreateLink<IAuthorLink>(Dal.AuthorId, Dal.AuthorName);
-            bookSeries = _linkFactory.CreateLink<IBookSeriesLink>(Dal.BookSeriesId, Dal.BookSeriesName);
-            publishingHouse = _linkFactory.CreateLink<IPublishingHouseLink>(Dal.PublishingHouseId, Dal.PublishingHouseName);
+            author = _linkFactory.MakeLink<IAuthorLink>(Dal.AuthorId, Dal.AuthorName);
+            bookSeries = _linkFactory.MakeLink<IBookSeriesLink>(Dal.BookSeriesId, Dal.BookSeriesName);
+            publishingHouse = _linkFactory.MakeLink<IPublishingHouseLink>(Dal.PublishingHouseId, Dal.PublishingHouseName);
 
             return Create(Dal.Id, Dal.Name, Dal.PageNumber, author, bookSeries, publishingHouse);
         }

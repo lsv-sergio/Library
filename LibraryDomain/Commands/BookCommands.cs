@@ -20,7 +20,7 @@ namespace LibraryDomain.Commands
             _bookDalCommands = BookDalCommands;
         }
 
-        public override int Save(BaseDomain Domain)
+        public override int Save(IBaseDomain Domain)
         {
             int bookId = 0;
             BookDomain bookDomain = Domain as BookDomain;
@@ -92,7 +92,7 @@ namespace LibraryDomain.Commands
             return bookId;
         }
 
-        public override int Delete(BaseDomain Domain)
+        public override int Delete(IBaseDomain Domain)
         {
             int bookId = 0;
             BookDomain bookDomain = Domain as BookDomain;

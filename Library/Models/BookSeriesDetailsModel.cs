@@ -6,11 +6,10 @@ namespace Library.Models
 {
     public class BookSeriesDetailsModel
     {
-
         public int Id { get; set; }
 
         [Display(Name = "Название серии")]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Display(Name = "Издательство")]
         public IPublishingHouseLink PublishingHouse { get; set; }

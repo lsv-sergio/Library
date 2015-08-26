@@ -1,5 +1,4 @@
 E:\NET Poject\Library\Library.Tests\obj\Debug\Library.Tests.csprojResolveAssemblyReference.cache
-D:\netProject\Library\Library.Tests\obj\Debug\Library.Tests.csprojResolveAssemblyReference.cache
 D:\netProject\Library\Library.Tests\bin\Debug\Library.Tests.dll.config
 D:\netProject\Library\Library.Tests\bin\Debug\Library.Tests.dll
 D:\netProject\Library\Library.Tests\bin\Debug\Library.Tests.pdb
@@ -41,5 +40,6 @@ D:\netProject\Library\Library.Tests\bin\Debug\ru\System.Web.WebPages.resources.d
 D:\netProject\Library\Library.Tests\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 D:\netProject\Library\Library.Tests\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
 D:\netProject\Library\Library.Tests\bin\Debug\ru\System.Web.Optimization.resources.dll
+D:\netProject\Library\Library.Tests\obj\Debug\Library.Tests.csprojResolveAssemblyReference.cache
 D:\netProject\Library\Library.Tests\obj\Debug\Library.Tests.dll
 D:\netProject\Library\Library.Tests\obj\Debug\Library.Tests.pdb

@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LibraryDomain.Queries.DomainQueries;
+using LibraryDal.EF;
 
 namespace LibraryDomain.Queries.DomainQueries
 {
-    public interface IBookDomainQueries : IDomainQueries<IBookDomain>
+    public interface IBookDomainQueries : IDomainQueries<BooksView,IBookDomain>
     {
     }
 }

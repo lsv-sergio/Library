@@ -18,14 +18,15 @@ namespace LibraryDomain.Queries.LinksQueries
         {
         }
 
-        public IAuthorLink Create(int Id, string Name)
+        public override IAuthorLink MakeLink(int Id, string Name)
         {
             return new AuthorLink(Id, Name.Trim());
         }
 
         protected override IAuthorLink DalToQuery(AuthorView Dal)
         {
-            return Create(Dal.Id, Dal.Name);
+            return MakeLink(Dal.Id, Dal.Name);
         }
+
     }
 }

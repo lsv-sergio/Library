@@ -1,4 +1,5 @@
-﻿using LibraryDal.Infrastructure.QueriesDal.Factory;
+﻿using LibraryDal.EF;
+using LibraryDal.Infrastructure.QueriesDal.Factory;
 using LibraryDomain.Domains;
 using System;
 using System.Collections.Generic;
@@ -37,12 +38,12 @@ namespace LibraryDomain.Queries.DomainQueries.Factory
                 _domainQueries.Add(interfaceType, type);
             }
         }
-       
-        public IDomainQueries<TDomain> GetQuery<TDomain>() where TDomain : IBaseDomain
+
+        public IDomainQueries<IBaseDal, IBaseDomain> GetQuery<TDomain>() where TDomain : IBaseDomain
         {
             if (!_domainQueries.Keys.Contains(typeof(TDomain)))
                 return null;
-            return (IDomainQueries<TDomain>)Activator.CreateInstance(_domainQueries[typeof(TDomain)], new object[] { _dalQueryFactory });
+            return (IDomainQueries<IBaseDal, IBaseDomain>)Activator.CreateInstance(_domainQueries[typeof(TDomain)], new object[] { _dalQueryFactory });
         }
 
     }

@@ -11,6 +11,7 @@ namespace Library.Models
     {
         public int Id { get; set; }
 
+        [Display(Name="Фио")]
         public string Name { get; set; }
 
         public IEnumerable<IBookLink> Books { get; set; }

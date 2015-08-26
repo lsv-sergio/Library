@@ -90,6 +90,7 @@
     <Compile Include="Core\Views\IPublishingHouseDomainView.cs" />
     <Compile Include="Core\Views\PublishingHouseDomainView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\AbstractQuery\IBaseQuery.cs" />
     <Compile Include="Queries\DomainQueries\BaseDomainQueries.cs" />
     <Compile Include="Queries\DomainQueries\Factory\DomainQueriesFactory.cs" />
     <Compile Include="Queries\DomainQueries\Factory\IDomainQueriesFactory.cs" />
@@ -106,7 +107,7 @@
     <Compile Include="Queries\LinksQueries\AuthorLinkQueries.cs" />
     <Compile Include="Queries\LinksQueries\BaseLinkQueries.cs" />
     <Compile Include="Queries\LinksQueries\IAuthorLinkQueries.cs" />
-    <Compile Include="Queries\LinksQueries\Factory\ILinkFactory.cs" />
+    <Compile Include="Queries\LinksQueries\Factory\ILinkFacade.cs" />
     <Compile Include="Queries\DomainQueries\IBookDomainQueries.cs" />
     <Compile Include="Queries\DomainQueries\IBookSeriesDomainQueries.cs" />
     <Compile Include="Queries\DomainQueries\IPublishingHouseQueries.cs" />
@@ -114,7 +115,7 @@
     <Compile Include="Queries\LinksQueries\IBookLinkQueries.cs" />
     <Compile Include="Queries\LinksQueries\IBookSeriesLinkQueries.cs" />
     <Compile Include="Queries\LinksQueries\ILinkQueries.cs" />
-    <Compile Include="Queries\LinksQueries\Factory\LinkFactory.cs" />
+    <Compile Include="Queries\LinksQueries\Factory\LinkFacade.cs" />
     <Compile Include="Queries\LinksQueries\LinkValidator.cs" />
     <Compile Include="Queries\DomainQueries\PublishingHouseQueries.cs" />
     <Compile Include="Queries\ViewsQueries\AuthorViewQueries.cs" />

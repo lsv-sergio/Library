@@ -10,5 +10,6 @@ namespace LibraryDomain.Queries.ViewsQueries
 {
     public interface IBookViewQueries:IViewQueries<IBookDomainView>
     {
+        IBookDomainView MakeView(int Id, string Name, int PageCount, IAuthorLink Author, IBookSeriesLink BookSeries, IPublishingHouseLink PublishingHouse);
     }
 }

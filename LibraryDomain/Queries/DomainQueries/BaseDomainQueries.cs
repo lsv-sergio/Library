@@ -15,9 +15,9 @@ using System.Threading.Tasks;
 
 namespace LibraryDomain.Queries.DomainQueries
 {
-    public abstract class BaseDomainQueries<TDal, TQuery> : BaseQueries<TDal, TQuery> 
+    public abstract class BaseDomainQueries<TDal, TDomain> : BaseQueries<TDal, TDomain>, IDomainQueries<TDal,TDomain>
         where TDal : class, IBaseDal
-        where TQuery :  IBaseDomain
+        where TDomain :  IBaseDomain
      {
          protected readonly IPublishingHouseDalQuery _publishingHouseDalQuery;
          protected readonly IBookDalQuery _bookDalQuery;
@@ -25,11 +25,11 @@ namespace LibraryDomain.Queries.DomainQueries
          protected readonly IBookSeriesStatisticDal _bookSeriesStatisticDal;
          protected readonly IPublishingHousesStatisticDal _publishingHousesStatisticDal;
 
-         protected readonly ILinkFactory _linkFactory;
+         protected readonly ILinkFacade _linkFactory;
 
          protected readonly IDomainCommands _domainCommands;
 
-         public BaseDomainQueries(IDalQueryFactory DalQueryFactory, ILinkFactory LinkFactory, IDomainCommands DomainCommands):base(DalQueryFactory)
+         public BaseDomainQueries(IDalQueryFactory DalQueryFactory, ILinkFacade LinkFactory, IDomainCommands DomainCommands):base(DalQueryFactory)
          {
 
              if (DalQueryFactory != null)
@@ -46,7 +46,18 @@ namespace LibraryDomain.Queries.DomainQueries
              _domainCommands = DomainCommands;
          }
 
-        protected bool CheckServices()
+         public abstract TDomain Create();
+
+         public TDomain GetById(int Id)
+         {
+             if (Id <= 0)
+                 return default(TDomain);
+             if (_dalQueries == null)
+                 return default(TDomain);
+             return DalToQuery(_dalQueries.GetById(Id));
+         }
+
+         protected bool CheckServices()
          {
              return _publishingHouseDalQuery != null && _bookDalQuery != null
                  && _authorsStatisticDal != null && _bookSeriesStatisticDal != null;

@@ -1,4 +1,5 @@
 ﻿using LibraryDal.EF;
+using LibraryDal.Infrastructure.QueriesDal.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,16 +8,16 @@ using System.Text;
 
 namespace LibraryDal.Infrastructure.QueriesDal
 {
-    public interface IBookDalQuery
+    public interface IBookDalQuery:IDalQuery<BooksView>
     {
 
-        BooksView GetById(int Id);
+        //BooksView GetById(int Id);
 
-        BooksView GetByFilter(Func<BooksView, bool> Filter);
+        //BooksView GetByFilter(Func<BooksView, bool> Filter);
 
-        IEnumerable<BooksView> GetAllByFilter(Func<BooksView, bool> Filter);
+        //IEnumerable<BooksView> GetAllByFilter(Func<BooksView, bool> Filter);
 
-        IEnumerable<BooksView> GetAll();
+        //IEnumerable<BooksView> GetAll();
 
         IEnumerable<BooksView> GetByAuthor(int AuthorId);
 

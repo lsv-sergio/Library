@@ -1,0 +1,9 @@
+D:\netProject\Library\LibraryDomain\bin\Release\LibraryDomain.dll
+D:\netProject\Library\LibraryDomain\bin\Release\LibraryDomain.pdb
+D:\netProject\Library\LibraryDomain\bin\Release\EntityFramework.dll
+D:\netProject\Library\LibraryDomain\bin\Release\LibraryDal.dll
+D:\netProject\Library\LibraryDomain\bin\Release\LibraryDal.pdb
+D:\netProject\Library\LibraryDomain\bin\Release\EntityFramework.xml
+D:\netProject\Library\LibraryDomain\obj\Release\LibraryDomain.csprojResolveAssemblyReference.cache
+D:\netProject\Library\LibraryDomain\obj\Release\LibraryDomain.dll
+D:\netProject\Library\LibraryDomain\obj\Release\LibraryDomain.pdb

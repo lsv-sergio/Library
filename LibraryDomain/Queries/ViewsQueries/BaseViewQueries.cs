@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LibraryDomain.Queries.ViewsQueries
 {
-    public abstract class BaseViewQueries<TDal, TView> : BaseQueries<TDal, TView>
+    public abstract class BaseViewQueries<TDal, TView> : BaseQueries<TDal, TView>, IViewQueries<TView>
         where TDal : class, IBaseDal
         where TView : IBaseDomainView
     {
@@ -18,5 +18,6 @@ namespace LibraryDomain.Queries.ViewsQueries
         {
 
         }
+
     }
 }

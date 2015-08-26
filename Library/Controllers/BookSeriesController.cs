@@ -20,7 +20,7 @@ namespace Library.Controllers
         private IBookSeriesDomainQueries _domainQueries;
         protected IBookSeriesViewQueries _viewQueries;
 
-        public BookSeriesController(IBookSeriesDomainQueries DomainQueries, IBookSeriesViewQueries ViewQueries, ILinkFactory LinkFactory)
+        public BookSeriesController(IBookSeriesDomainQueries DomainQueries, IBookSeriesViewQueries ViewQueries, ILinkFacade LinkFactory)
             : base(LinkFactory)
         {
             _domainQueries = DomainQueries;

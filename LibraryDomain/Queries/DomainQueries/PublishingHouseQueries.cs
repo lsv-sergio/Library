@@ -12,7 +12,7 @@ namespace LibraryDomain.Queries.DomainQueries
 {
     public class PublishingHouseDomainQueries : BaseDomainQueries<PublishingHouseView, IPublishingHouseDomain>, IPublishingHouseDomainQueries
     {
-        public PublishingHouseDomainQueries(IDalQueryFactory QueryFactory, ILinkFactory LinkFactory, IPublishingHouseCommands PublishingHouseCommands)
+        public PublishingHouseDomainQueries(IDalQueryFactory QueryFactory, ILinkFacade LinkFactory, IPublishingHouseCommands PublishingHouseCommands)
             : base(QueryFactory, LinkFactory, PublishingHouseCommands)
         {
         }
@@ -22,7 +22,7 @@ namespace LibraryDomain.Queries.DomainQueries
             return Create(Id, Name, new List<IBookLink>(), new List<IBookSeriesLink>(), new List<IAuthorLink>());
         }
 
-        public IPublishingHouseDomain Create()
+        public override IPublishingHouseDomain Create()
         {
             return Create(0, "");
         }
@@ -33,13 +33,13 @@ namespace LibraryDomain.Queries.DomainQueries
                 return null;
 
             List<IBookLink> books = 
-                _bookDalQuery.GetByPublishingHouse(Dal.Id).Select(x => _linkFactory.CreateLink<IBookLink>(x.Id,x.Name)).ToList();
+                _bookDalQuery.GetByPublishingHouse(Dal.Id).Select(x => _linkFactory.MakeLink<IBookLink>(x.Id,x.Name)).ToList();
 
             List<IBookSeriesLink> bookSeries =
-                _bookSeriesStatisticDal.GetByPublishingHouse(Dal.Id).Select(x => _linkFactory.CreateLink<IBookSeriesLink>(x.Id, x.Name)).ToList();
+                _bookSeriesStatisticDal.GetByPublishingHouse(Dal.Id).Select(x => _linkFactory.MakeLink<IBookSeriesLink>(x.Id, x.Name)).ToList();
 
             List<IAuthorLink> authors =
-                _authorsStatisticDal.GetByPblishingHouse(Dal.Id).Select(x => _linkFactory.CreateLink<IAuthorLink>(x.Id, x.Name)).ToList();
+                _authorsStatisticDal.GetByPblishingHouse(Dal.Id).Select(x => _linkFactory.MakeLink<IAuthorLink>(x.Id, x.Name)).ToList();
 
             return Create(Dal.Id, Dal.Name, books, bookSeries, authors);
         }

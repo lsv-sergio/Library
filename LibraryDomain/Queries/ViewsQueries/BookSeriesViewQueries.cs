@@ -14,17 +14,17 @@ namespace LibraryDomain.Queries.ViewsQueries
 {
     public class BookSeriesViewQueries : BaseViewQueries<BookSeriesView, IBookSeriesDomainView>, IBookSeriesViewQueries
     {
-        private ILinkFactory _linkFactory;
+        private ILinkFacade _linkFactory;
         private IDalQueryFactory _dalQueryFactory;
 
-        public BookSeriesViewQueries(IDalQueryFactory DalQueryFactory, ILinkFactory LinkFactory)
+        public BookSeriesViewQueries(IDalQueryFactory DalQueryFactory, ILinkFacade LinkFactory)
             : base(DalQueryFactory)
         {
             _dalQueryFactory = DalQueryFactory;
             _linkFactory = LinkFactory;
         }
 
-        public IBookSeriesDomainView Create(int Id, string Name, IPublishingHouseLink PublishingHouse)
+        public IBookSeriesDomainView MakeView(int Id, string Name, IPublishingHouseLink PublishingHouse)
         {
             if (!IsValidValues(Id, Name))
                 return null;
@@ -35,7 +35,7 @@ namespace LibraryDomain.Queries.ViewsQueries
         {
             if (Dal == null || _linkFactory == null)
                 return null;
-            return Create(Dal.Id, Dal.Name, _linkFactory.CreateLink<IPublishingHouseLink>(Dal.PublishingHouseId, Dal.PublishingHouseName));
+            return MakeView(Dal.Id, Dal.Name, _linkFactory.MakeLink<IPublishingHouseLink>(Dal.PublishingHouseId, Dal.PublishingHouseName));
         }
         
     }

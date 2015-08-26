@@ -10,7 +10,7 @@ namespace LibraryDomain.Queries.ViewsQueries
     public interface IViewQueries<TQuery> where TQuery :IBaseDomainView
     {
 
-        TQuery GetById(int Id);
+        //TQuery GetById(int Id);
 
         IEnumerable<TQuery> GetAll();
 

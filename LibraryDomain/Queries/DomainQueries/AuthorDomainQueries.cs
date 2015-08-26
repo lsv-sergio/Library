@@ -15,7 +15,7 @@ namespace LibraryDomain.Queries.DomainQueries
     public class AuthorDomainQueries : BaseDomainQueries<AuthorView, IAuthorDomain>, IAuthorDomainQueries
     {
 
-        public AuthorDomainQueries(IDalQueryFactory QueryFactory, ILinkFactory LinkFactory, IAuthorCommands AuthorCommands)
+        public AuthorDomainQueries(IDalQueryFactory QueryFactory, ILinkFacade LinkFactory, IAuthorCommands AuthorCommands)
             : base(QueryFactory, LinkFactory, AuthorCommands)
         {
             if (QueryFactory != null)
@@ -30,7 +30,7 @@ namespace LibraryDomain.Queries.DomainQueries
                 new List<IPublishingHouseLink>());
         }
 
-        public IAuthorDomain Create()
+        public override IAuthorDomain Create()
         {
             return Create(0, "");
         }
@@ -44,11 +44,11 @@ namespace LibraryDomain.Queries.DomainQueries
             List<IPublishingHouseLink> publishingHouses = new List<IPublishingHouseLink>();
             List<IBookSeriesLink> bookSeries = new List<IBookSeriesLink>();
 
-            books = _bookDalQuery.GetByAuthor(Dal.Id).Select(x => _linkFactory.CreateLink<IBookLink>(x.Id, x.Name)).ToList();
+            books = _bookDalQuery.GetByAuthor(Dal.Id).Select(x => _linkFactory.MakeLink<IBookLink>(x.Id, x.Name)).ToList();
 
-            bookSeries = _bookSeriesStatisticDal.GetByAuthor(Dal.Id).Select(x => _linkFactory.CreateLink<IBookSeriesLink>(x.Id, x.Name)).ToList();
+            bookSeries = _bookSeriesStatisticDal.GetByAuthor(Dal.Id).Select(x => _linkFactory.MakeLink<IBookSeriesLink>(x.Id, x.Name)).ToList();
 
-            publishingHouses = _publishingHousesStatisticDal.GetByAuthor(Dal.Id).Select(x => _linkFactory.CreateLink<IPublishingHouseLink>(x.Id, x.Name)).ToList();
+            publishingHouses = _publishingHousesStatisticDal.GetByAuthor(Dal.Id).Select(x => _linkFactory.MakeLink<IPublishingHouseLink>(x.Id, x.Name)).ToList();
 
             return Create(Dal.Id, Dal.Name, books, bookSeries, publishingHouses);
         }
@@ -60,5 +60,6 @@ namespace LibraryDomain.Queries.DomainQueries
         {
             return new AuthorDomain(Id, Name, Books, BookSeries, PublishingHouses, _domainCommands);
         }
+
     }
 }

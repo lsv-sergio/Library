@@ -13,8 +13,8 @@ namespace LibraryDomain.Queries.ViewsQueries
         public AuthorViewQueries(IDalQueryFactory QueryFactory):base(QueryFactory)
         {
         }
-       
-        public IAuthorDomainView Create(int Id, string Name)
+
+        public IAuthorDomainView MakeView(int Id, string Name)
         {
             if (!IsValidValues(Id, Name))
                 return null;
@@ -26,7 +26,7 @@ namespace LibraryDomain.Queries.ViewsQueries
 
             if (Dal == null)
                 return null;
-            return Create(Dal.Id, Dal.Name);
+            return MakeView(Dal.Id, Dal.Name);
 
         }
 

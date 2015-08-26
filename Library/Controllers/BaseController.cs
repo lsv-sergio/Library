@@ -18,8 +18,8 @@ namespace Library.Controllers
 {
     public abstract class BaseController : Controller
     {
-        protected ILinkFactory _linkFactory;
-        public BaseController(ILinkFactory LinkFactory)
+        protected ILinkFacade _linkFactory;
+        public BaseController(ILinkFacade LinkFactory)
         {
             _linkFactory = LinkFactory;
         }

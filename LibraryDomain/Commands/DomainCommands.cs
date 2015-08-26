@@ -13,8 +13,8 @@ namespace LibraryDomain.Commands
         public DomainCommands()
         {
         }
-        public abstract int Save(BaseDomain Domain);
-        public abstract int Delete(BaseDomain Domain);
+        public abstract int Save(IBaseDomain Domain);
+        public abstract int Delete(IBaseDomain Domain);
     }
 
 }

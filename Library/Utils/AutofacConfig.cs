@@ -33,7 +33,7 @@ namespace Library.Utils
 
             builder.RegisterType<DalQueryFactory>().As<IDalQueryFactory>().InstancePerDependency();
 
-            builder.RegisterType<LinkFactory>().As<ILinkFactory>().InstancePerDependency();
+            builder.RegisterType<LinkFacade>().As<ILinkFacade>().InstancePerDependency();
 
             builder.RegisterAssemblyTypes(typeof(DalCommand<>).Assembly)
                 .Where(type => type.BaseType != null && type.BaseType.IsAbstract && type.BaseType.IsGenericType)

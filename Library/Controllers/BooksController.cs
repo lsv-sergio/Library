@@ -19,7 +19,7 @@ namespace Library.Controllers
         IBookDomainQueries _bookQueries;
         IBookViewQueries _bookViewQueries;
 
-        public BooksController(IBookDomainQueries BookQueries, IBookViewQueries BookViewQueries, ILinkFactory LinkFactory)
+        public BooksController(IBookDomainQueries BookQueries, IBookViewQueries BookViewQueries, ILinkFacade LinkFactory)
             : base(LinkFactory)
         {
             _bookQueries = BookQueries;

@@ -8,7 +8,7 @@ namespace LibraryDomain.Commands
 {
     public interface IDomainCommands
     {
-        int Save(BaseDomain Domain);
-        int Delete(BaseDomain Domain);
+        int Save(IBaseDomain Domain);
+        int Delete(IBaseDomain Domain);
     }
 }

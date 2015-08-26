@@ -1,0 +1,17 @@
+﻿@model IEnumerable<BaseModel>
+@using Library.Models;
+
+@if (Model.Count() > 0)
+{
+    var classes = new { @class = "btn btn-default col-md-3 col-sm-4 col-xs-12 truncate-text margin-all" };
+    var ajaxOptions = new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" };
+    
+    <div class="row form-group">
+        @foreach (var book in Model)
+        {
+            @Ajax.ActionLink(book.Name.Trim(), "Details", "Books", new { id = @book.Id }, ajaxOptions, classes)
+        }
+    </div>
+
+}
+

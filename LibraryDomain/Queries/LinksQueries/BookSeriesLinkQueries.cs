@@ -20,7 +20,7 @@ namespace LibraryDomain.Queries.LinksQueries
         {
         }
 
-        public IBookSeriesLink Create(int Id, string Name)
+        public override IBookSeriesLink MakeLink(int Id, string Name)
         {
             return new BookSeriesLink(Id, Name.Trim());
         }
@@ -35,7 +35,7 @@ namespace LibraryDomain.Queries.LinksQueries
 
         protected override IBookSeriesLink DalToQuery(BookSeriesView Dal)
         {
-            return Create(Dal.Id, Dal.Name);
+            return MakeLink(Dal.Id, Dal.Name);
         }
 
     }

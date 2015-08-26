@@ -20,7 +20,7 @@ namespace Library.Controllers
         IPublishingHouseDomainQueries _publishingHouseQueries;
         IPublishingHouseViewQueries _publishingHouseViewQueries;
 
-        public PublishingHouseController(IPublishingHouseDomainQueries PublishingHouseQueries, IPublishingHouseViewQueries PublishingHouseViewQueries, ILinkFactory LinkFactory)
+        public PublishingHouseController(IPublishingHouseDomainQueries PublishingHouseQueries, IPublishingHouseViewQueries PublishingHouseViewQueries, ILinkFacade LinkFactory)
             :base(LinkFactory)
         {
             _publishingHouseQueries = PublishingHouseQueries;

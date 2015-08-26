@@ -1,4 +1,5 @@
-﻿using LibraryDomain.Domains;
+﻿using LibraryDal.EF;
+using LibraryDomain.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace LibraryDomain.Queries.DomainQueries.Factory
 {
     public interface IDomainQueriesFactory
     {
-        IDomainQueries<TDomain> GetQuery<TDomain>() where TDomain : IBaseDomain;
+        IDomainQueries<IBaseDal, IBaseDomain> GetQuery<TDomain>()
+            where TDomain : IBaseDomain;
+            //where TDal : IBaseDal;
     }
 }

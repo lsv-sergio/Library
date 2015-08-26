@@ -20,7 +20,7 @@ namespace Library.Controllers
         IAuthorDomainQueries _authorDomainQueries;
         IAuthorViewQueries _authorViewQueries;
 
-        public AuthorsController(IAuthorDomainQueries AuthorDomainQueries, IAuthorViewQueries AuthorViewQueries, ILinkFactory LinkFactory)
+        public AuthorsController(IAuthorDomainQueries AuthorDomainQueries, IAuthorViewQueries AuthorViewQueries, ILinkFacade LinkFactory)
             : base(LinkFactory)
         {
             _authorDomainQueries = AuthorDomainQueries;

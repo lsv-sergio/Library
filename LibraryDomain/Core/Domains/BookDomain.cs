@@ -62,22 +62,25 @@ namespace LibraryDomain.Domains
 
         public void SetPageCount(int PageCount)
         {
+            if(PageCount > 0)
             _pageCount = PageCount;
         }
 
-        public void SetPublishingHouse(IPublishingHouseLink PublishingHouseView)
+        public void SetPublishingHouse(IPublishingHouseLink PublishingHouseLink)
         {
-            _publishingHouses = PublishingHouseView;
+            if(PublishingHouseLink != null)
+            _publishingHouses = PublishingHouseLink;
         }
 
-        public void SetBookSeries(IBookSeriesLink BookSeriesView)
+        public void SetBookSeries(IBookSeriesLink BookSeriesLink)
         {
-            _bookSeries = BookSeriesView;
+            _bookSeries = BookSeriesLink;
         }
 
-        public void SetAuthors(IAuthorLink AuthorView)
+        public void SetAuthors(IAuthorLink AuthorLink)
         {
-            _author = AuthorView;
+            if(AuthorLink != null)
+            _author = AuthorLink;
         }
 
         public override void Save()

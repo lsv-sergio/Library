@@ -133,6 +133,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Models\PublishingDetailsModel.cs" />
     <Compile Include="Models\AuthorModel.cs" />
     <Compile Include="Models\AuthorDetailsModel.cs" />
@@ -160,6 +161,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\Library-remote.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -212,6 +214,7 @@
     <Content Include="Views\BookSeries\PartialEdit.cshtml" />
     <Content Include="Views\PublishingHouse\PartialDetails.cshtml" />
     <Content Include="Views\PublishingHouse\PartialEdit.cshtml" />
+    <Content Include="Views\Shared\_PartialLinkSection.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

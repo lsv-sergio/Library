@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище LibraryModelContainer" CdmEntityContainer="EFLibraryDbContext">
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="LibraryModel.Author">
+        <MappingFragment StoreEntitySet="Author">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="LibraryModel.Book">
+        <MappingFragment StoreEntitySet="Book">
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="PublisherHouseId" ColumnName="PublisherHouseId" />
+          <ScalarProperty Name="BookSeriesId" ColumnName="BookSeriesId" />
+          <ScalarProperty Name="PageNumber" ColumnName="PageNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookSeries1">
+      <EntityTypeMapping TypeName="LibraryModel.BookSerie">
+        <MappingFragment StoreEntitySet="BookSeries">
+          <ScalarProperty Name="PublishingHouseId" ColumnName="PublishingHouseId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PublishingHouses">
+      <EntityTypeMapping TypeName="LibraryModel.PublishingHouse">
+        <MappingFragment StoreEntitySet="PublishingHouse">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuthorsStatistics">
+      <EntityTypeMapping TypeName="LibraryModel.AuthorsStatistic">
+        <MappingFragment StoreEntitySet="AuthorsStatistic">
+          <ScalarProperty Name="PublishingHouseName" ColumnName="PublishingHouseName" />
+          <ScalarProperty Name="PublishingHouseId" ColumnName="PublishingHouseId" />
+          <ScalarProperty Name="BookSeriesName" ColumnName="BookSeriesName" />
+          <ScalarProperty Name="BookSeriesId" ColumnName="BookSeriesId" />
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuthorViews">
+      <EntityTypeMapping TypeName="LibraryModel.AuthorView">
+        <MappingFragment StoreEntitySet="AuthorView">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookSeriesStatistics">
+      <EntityTypeMapping TypeName="LibraryModel.BookSeriesStatistic">
+        <MappingFragment StoreEntitySet="BookSeriesStatistic">
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="PublishingHouseName" ColumnName="PublishingHouseName" />
+          <ScalarProperty Name="PublishingHouseId" ColumnName="PublishingHouseId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookSeriesViews">
+      <EntityTypeMapping TypeName="LibraryModel.BookSeriesView">
+        <MappingFragment StoreEntitySet="BookSeriesView">
+          <ScalarProperty Name="PublishingHouseName" ColumnName="PublishingHouseName" />
+          <ScalarProperty Name="PublishingHouseId" ColumnName="PublishingHouseId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BooksViews">
+      <EntityTypeMapping TypeName="LibraryModel.BooksView">
+        <MappingFragment StoreEntitySet="BooksView">
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="PublishingHouseName" ColumnName="PublishingHouseName" />
+          <ScalarProperty Name="PublishingHouseId" ColumnName="PublishingHouseId" />
+          <ScalarProperty Name="BookSeriesName" ColumnName="BookSeriesName" />
+          <ScalarProperty Name="BookSeriesId" ColumnName="BookSeriesId" />
+          <ScalarProperty Name="PageNumber" ColumnName="PageNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PublishingHousesStatistics">
+      <EntityTypeMapping TypeName="LibraryModel.PublishingHousesStatistic">
+        <MappingFragment StoreEntitySet="PublishingHousesStatistic">
+          <ScalarProperty Name="BookSeriesName" ColumnName="BookSeriesName" />
+          <ScalarProperty Name="BookSeriesId" ColumnName="BookSeriesId" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PublishingHouseViews">
+      <EntityTypeMapping TypeName="LibraryModel.PublishingHouseView">
+        <MappingFragment StoreEntitySet="PublishingHouseView">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

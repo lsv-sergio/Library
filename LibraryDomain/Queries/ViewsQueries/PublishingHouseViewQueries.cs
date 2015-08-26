@@ -16,7 +16,7 @@ namespace LibraryDomain.Queries.ViewsQueries
         {
             }
 
-        public IPublishingHouseDomainView Create(int Id, string Name)
+        public IPublishingHouseDomainView MakeView(int Id, string Name)
         {
             return new PublishingHouseDomainView(Id, Name);
         }
@@ -25,7 +25,7 @@ namespace LibraryDomain.Queries.ViewsQueries
         {
             if (Dal == null)
                 return null;
-            return Create(Dal.Id, Dal.Name);
+            return MakeView(Dal.Id, Dal.Name);
         }
     }
 }

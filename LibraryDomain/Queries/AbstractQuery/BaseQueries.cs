@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace LibraryDomain.Queries.AbstractQuery
 {
-    public abstract class BaseQueries<TDal,TQuery>
+    public abstract class BaseQueries<TDal,TQuery>:IBaseQuery<TDal, TQuery>
         where TDal : class, IBaseDal
         where TQuery : ICoreDomain
     {
@@ -26,20 +26,25 @@ namespace LibraryDomain.Queries.AbstractQuery
                 _dalQueries = QueryFactory.GetQueryByClass<TDal>();
         }
 
-        public virtual TQuery GetById(int Id)
-        {
-            if (Id == 0)
-                return default(TQuery);
-            if (_dalQueries == null)
-                return default(TQuery);
-            return DalToQuery(_dalQueries.GetById(Id));
-        }
-
         public virtual IEnumerable<TQuery> GetAll()
         {
             if (_dalQueries == null)
                 return new List<TQuery>();
-            return _dalQueries.GetAll().Select(x => DalToQuery(x)).ToList().AsEnumerable(); 
+            return _dalQueries.GetAll().Select(x => DalToQuery(x)).AsEnumerable(); 
+        }
+
+        public virtual IEnumerable<TQuery> GetAllByFilter(Func<TDal, bool> Filter)
+        {
+            if (Filter == null)
+                return new List<TQuery>();
+            return _dalQueries.GetAllByFilter(Filter).Select(x => DalToQuery(x)).AsEnumerable();
+        }
+
+        public virtual TQuery GetByFilter(Func<TDal,bool> Filter)
+        {
+            if (Filter == null)
+                return default(TQuery);
+            return DalToQuery(_dalQueries.GetByFilter(Filter));
         }
 
         protected abstract TQuery DalToQuery(TDal Dal);

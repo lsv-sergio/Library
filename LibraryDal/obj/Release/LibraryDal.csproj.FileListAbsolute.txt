@@ -1,0 +1,11 @@
+D:\netProject\Library\LibraryDal\bin\Release\LibraryDal.dll.config
+D:\netProject\Library\LibraryDal\bin\Release\LibraryDal.dll
+D:\netProject\Library\LibraryDal\bin\Release\LibraryDal.pdb
+D:\netProject\Library\LibraryDal\bin\Release\EntityFramework.dll
+D:\netProject\Library\LibraryDal\bin\Release\EntityFramework.SqlServer.dll
+D:\netProject\Library\LibraryDal\bin\Release\EntityFramework.xml
+D:\netProject\Library\LibraryDal\bin\Release\EntityFramework.SqlServer.xml
+D:\netProject\Library\LibraryDal\bin\Release\ru\EntityFramework.resources.dll
+D:\netProject\Library\LibraryDal\obj\Release\LibraryDal.dll
+D:\netProject\Library\LibraryDal\obj\Release\LibraryDal.pdb
+D:\netProject\Library\LibraryDal\obj\Release\LibraryDal.csprojResolveAssemblyReference.cache

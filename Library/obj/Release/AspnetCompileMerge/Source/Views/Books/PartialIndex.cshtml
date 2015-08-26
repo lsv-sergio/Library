@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BooksListModel>
+@using Library.Models;
+
+@{
+    Layout = null;
+}
+
+<h4>Список книг</h4>
+<p>
+    <div class="form-group">
+        <div class="btn">@Ajax.ActionLink("Добавить книгу", "Create", "Books", new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" })</div>
+    </div>
+</p>
+
+@if (Model.Count() == 0)
+{
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h5>(Пусто)</h5>
+        </div>
+    </div>
+}
+else
+{
+    int columnPerRow = 2;
+    int columnDiv = 12 / columnPerRow;
+    string columnClass = "col-md-" + columnDiv.ToString();
+    var items = Model.ToArray();
+    for (int i = 0; i < items.Count(); i++)
+    {
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @{
+        for (int j = 0; j < columnPerRow; j++)
+        {
+            i += j;
+            if (i >= items.Count())
+            {
+                break;
+            }
+            BooksListModel item = items[i];
+            <div class=@columnClass>
+                <div class="row row-top-margin">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <img src="~/Content/noimage.gif" />
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div><div>Название: </div><div>@Ajax.ActionLink(item.Name, "Details", "Books", new { Id = item.Id },new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { })</div></div>
+                        <div><div>Автор: </div><div>@Ajax.ActionLink(item.Author.Name, "Details", "Authors", new { Id = item.Author.Id }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { })</div></div>
+                        <div><div>Издательство: </div><div>@Ajax.ActionLink(item.PublishingHouse.Name, "Details", "PublishingHouse", new { Id = item.PublishingHouse.Id }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { })</div></div>
+                        @if (item.BookSeries != null)
+                        {
+                            <div><div>Серия: </div><div>@Ajax.ActionLink(item.BookSeries.Name, "Details", "BookSeries", new { Id = item.BookSeries.Id }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { })</div></div>
+                        }
+                        else
+                        {
+                            <div ><div>Серия: </div></div>
+                        }
+                        <div>К-во страниц: @Html.DisplayFor(modelItem => item.PageCount)</div>
+                    </div>
+                </div>
+                <div class="row row-top-margin">
+                    <div class=" col-md-12">
+                        <div class="col-md-3 col-md-offset-3 col-sm-offset-0 col-xs-offset-0 col-xs-12">@Ajax.ActionLink("Изменить", "Edit", new { id = item.Id }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { @class = "btn btn-mini btn-default btn-block" })</div>
+                        <div class="col-md-3 col-xs-12">@Ajax.ActionLink("Инфо", "Details", new { id = item.Id }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { @class = "btn btn-mini btn-info btn-block" })</div>
+                        <div class="col-md-3 col-xs-12">@Ajax.ActionLink("Удалить", "Delete", new { id = item.Id }, new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" }, new { @class = "btn btn-mini btn-danger btn-block" })</div>
+                    </div>
+                </div>
+            </div>
+        }
+                }
+            </div>
+        </div>
+    }
+}
+
+
+<p>
+    <div class="btn">@Ajax.ActionLink("Добавить книгу", "Create", "Books",new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ContentBody" })</div>
+</p>

@@ -8,10 +8,11 @@ namespace LibraryDomain.Queries.LinksQueries
 {
     public interface ILinkQueries<TLink> where TLink : ILink
     {
-        TLink Create(int Id, string Name);
+        TLink MakeLink(int Id, string Name);
 
         TLink GetById(int Id);
 
         IEnumerable<TLink> GetAll();
+
     }
 }

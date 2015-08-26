@@ -13,16 +13,16 @@ namespace LibraryDomain.Queries.ViewsQueries
 {
     public class BookViewQueries : BaseViewQueries<BooksView, IBookDomainView>, IBookViewQueries
     {
-        private readonly ILinkFactory _linkFactory;
+        private readonly ILinkFacade _linkFactory;
 
-        public BookViewQueries(IDalQueryFactory QueryFactory, ILinkFactory LinkFactory)
+        public BookViewQueries(IDalQueryFactory QueryFactory, ILinkFacade LinkFactory)
             : base(QueryFactory)
         {
             if (LinkFactory != null)
                 _linkFactory = LinkFactory;
         }
 
-        public IBookDomainView Create(int Id, string Name,int PageCount, IAuthorLink Author, IBookSeriesLink BookSeries, IPublishingHouseLink PublishingHouse)
+        public IBookDomainView MakeView(int Id, string Name, int PageCount, IAuthorLink Author, IBookSeriesLink BookSeries, IPublishingHouseLink PublishingHouse)
         {
             if (!IsValidValues(Id, Name))
                 return null;
@@ -33,11 +33,11 @@ namespace LibraryDomain.Queries.ViewsQueries
         {
             if (Dal == null)
                 return null;
-            return Create(
+            return MakeView(
                 Dal.Id, Dal.Name, Dal.PageNumber,
-                _linkFactory.CreateLink<IAuthorLink>(Dal.AuthorId, Dal.AuthorName),
-                _linkFactory.CreateLink<IBookSeriesLink>(Dal.BookSeriesId, Dal.BookSeriesName),
-                _linkFactory.CreateLink<IPublishingHouseLink>(Dal.PublishingHouseId, Dal.PublishingHouseName)
+                _linkFactory.MakeLink<IAuthorLink>(Dal.AuthorId, Dal.AuthorName),
+                _linkFactory.MakeLink<IBookSeriesLink>(Dal.BookSeriesId, Dal.BookSeriesName),
+                _linkFactory.MakeLink<IPublishingHouseLink>(Dal.PublishingHouseId, Dal.PublishingHouseName)
                 );
         }
 

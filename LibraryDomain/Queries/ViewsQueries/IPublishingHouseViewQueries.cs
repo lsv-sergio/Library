@@ -9,5 +9,6 @@ namespace LibraryDomain.Queries.ViewsQueries
 {
     public interface IPublishingHouseViewQueries : IViewQueries<IPublishingHouseDomainView>
     {
+        IPublishingHouseDomainView MakeView(int Id, string Name);
     }
 }

@@ -96,6 +96,26 @@
     <Compile Include="DAL\DalCommandTest.cs" />
     <Compile Include="DAL\UnitOfWorkTest.cs" />
     <Compile Include="DAL\DalQueriesTest.cs" />
+    <Compile Include="Domains\Core\Domains\BookDomainTest.cs" />
+    <Compile Include="Domains\Core\Domains\BookSeriesDomainTest.cs" />
+    <Compile Include="Domains\Core\Domains\BaseDomainTest.cs" />
+    <Compile Include="Domains\Queries\DomainsQueries\BaseDomainQueriesTest.cs" />
+    <Compile Include="Domains\Queries\DomainsQueries\PublishingHouseDomainQueriesTest.cs" />
+    <Compile Include="Domains\Queries\DomainsQueries\BookSeriesDomainQueriesTest.cs" />
+    <Compile Include="Domains\Queries\DomainsQueries\BookDomainQueriesTest.cs" />
+    <Compile Include="Domains\Queries\DomainsQueries\AuthorDomainQueriesTest.cs" />
+    <Compile Include="Domains\Queries\BaseQueriesTest.cs" />
+    <Compile Include="Domains\Queries\LinkQueries\LinkFacadeTest.cs" />
+    <Compile Include="Domains\Queries\Stubs\BookSeriesDalQueryStub.cs" />
+    <Compile Include="Domains\Queries\Stubs\DalQueryFactoryStub.cs" />
+    <Compile Include="Domains\Queries\Stubs\AuthorsStatisticDalQueryStub.cs" />
+    <Compile Include="Domains\Queries\Stubs\BookSeriesStatisticDalBookDalQueryStub.cs" />
+    <Compile Include="Domains\Queries\Stubs\BookDalQueryStub.cs" />
+    <Compile Include="Domains\Queries\Stubs\LiknFactoryStub.cs" />
+    <Compile Include="Domains\Queries\Stubs\PublishingHouseStatisticDalQueryStub.cs" />
+    <Compile Include="Domains\Queries\Stubs\PublishingHouseDalQueryStub.cs" />
+    <Compile Include="Domains\Queries\Stubs\AuthorDalQueryStub.cs" />
+    <Compile Include="Domains\Queries\Stubs\IStub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -119,6 +139,7 @@
       <Name>Library</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

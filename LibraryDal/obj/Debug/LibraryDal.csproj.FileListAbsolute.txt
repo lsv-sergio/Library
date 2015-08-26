@@ -19,4 +19,3 @@ D:\netProject\Library\LibraryDal\bin\Debug\EntityFramework.SqlServer.xml
 D:\netProject\Library\LibraryDal\bin\Debug\ru\EntityFramework.resources.dll
 D:\netProject\Library\LibraryDal\obj\Debug\LibraryDal.dll
 D:\netProject\Library\LibraryDal\obj\Debug\LibraryDal.pdb
-D:\netProject\Library\LibraryDal\obj\Debug\LibraryDal.csprojResolveAssemblyReference.cache

@@ -58,6 +58,7 @@ namespace LibraryDomain.Domains
 
         public void SetPublishingHouse(IPublishingHouseLink PublisingHouseLink)
         {
+            if (PublisingHouseLink != null)
             _publishingHouseDomain = PublisingHouseLink;
         }
 

@@ -18,14 +18,14 @@ namespace LibraryDomain.Queries.LinksQueries
         {
         }
 
-        public IBookLink Create(int Id, string Name)
+        public override IBookLink MakeLink(int Id, string Name)
         {
             return new BookLink(Id, Name.Trim());
         }
 
         protected override IBookLink DalToQuery(BooksView Dal)
         {
-            return Create(Dal.Id, Dal.Name);
+            return MakeLink(Dal.Id, Dal.Name);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using LibraryDomain.Domains;
+﻿using LibraryDal.EF;
+using LibraryDomain.Domains;
+using LibraryDomain.Queries.AbstractQuery;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace LibraryDomain.Queries.DomainQueries
 {
-    public interface IDomainQueries<TDomain> where TDomain : IBaseDomain
+    public interface IDomainQueries<TDal, TDomain>:IBaseQuery<TDal,TDomain>
+        where TDal : class, IBaseDal
+        where TDomain : IBaseDomain
     {
         TDomain Create();
 
         TDomain GetById(int Id);
 
-        IEnumerable<TDomain> GetAll();
     }
 }

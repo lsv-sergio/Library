@@ -13,7 +13,7 @@ namespace LibraryDomain.Queries.DomainQueries
     public class BookSeriesDomainQueries : BaseDomainQueries<BookSeriesView, IBookSeriesDomain>, IBookSeriesDomainQueries
     {
 
-        public BookSeriesDomainQueries(IDalQueryFactory QueryFactory, ILinkFactory LinkFactory, IBookSeriesCommands BookSeriesCommands)
+        public BookSeriesDomainQueries(IDalQueryFactory QueryFactory, ILinkFacade LinkFactory, IBookSeriesCommands BookSeriesCommands)
             : base(QueryFactory,LinkFactory,BookSeriesCommands)
         {
         }
@@ -23,7 +23,7 @@ namespace LibraryDomain.Queries.DomainQueries
             return Create(Id, Name, PublishingHouse, new List<IBookLink>(), new List<IAuthorLink>());
         }
 
-        public IBookSeriesDomain Create()
+        public override IBookSeriesDomain Create()
         {
             return Create(0, "", null);
         }
@@ -33,11 +33,11 @@ namespace LibraryDomain.Queries.DomainQueries
             if (!CheckServices())
                 return null;
 
-            IPublishingHouseLink publishingHouse = _linkFactory.CreateLink<IPublishingHouseLink>(Dal.PublishingHouseId, Dal.PublishingHouseName);
+            IPublishingHouseLink publishingHouse = _linkFactory.MakeLink<IPublishingHouseLink>(Dal.PublishingHouseId, Dal.PublishingHouseName);
 
-            List<IBookLink> books = _bookDalQuery.GetByBookSeries(Dal.Id).Select(x => _linkFactory.CreateLink<IBookLink>(x.Id, x.Name)).ToList();
+            List<IBookLink> books = _bookDalQuery.GetByBookSeries(Dal.Id).Select(x => _linkFactory.MakeLink<IBookLink>(x.Id, x.Name)).ToList();
 
-            List<IAuthorLink> authors = _authorsStatisticDal.GetByBookSeries(Dal.Id).Select(x => _linkFactory.CreateLink<IAuthorLink>(x.Id,x.Name) ).ToList();
+            List<IAuthorLink> authors = _authorsStatisticDal.GetByBookSeries(Dal.Id).Select(x => _linkFactory.MakeLink<IAuthorLink>(x.Id,x.Name) ).ToList();
 
             return Create(Dal.Id, Dal.Name, publishingHouse, books, authors);
         }

@@ -20,7 +20,7 @@ namespace LibraryDomain.Commands
             _publishingHouseDalCommands = PublishingHouseDalCommands;
         }
 
-        public override int Save(BaseDomain Domain)
+        public override int Save(IBaseDomain Domain)
         {
             int publishingHouseId = 0;
             PublishingHouseDomain publishingHouseDomain = Domain as PublishingHouseDomain;
@@ -64,7 +64,7 @@ namespace LibraryDomain.Commands
             return publishingHouseId;
         }
 
-        public override int Delete(BaseDomain Domain)
+        public override int Delete(IBaseDomain Domain)
         {
             int publishingHouseId = 0;
             PublishingHouseDomain publishingHouseDomain = Domain as PublishingHouseDomain;

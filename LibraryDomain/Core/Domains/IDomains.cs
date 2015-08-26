@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryDomain.Core.Domains
 {
-    interface IDomains
+    interface IDomains:ICoreDomain
     {
     }
 }

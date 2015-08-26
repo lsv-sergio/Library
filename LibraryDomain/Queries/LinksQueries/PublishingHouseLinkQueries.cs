@@ -18,14 +18,14 @@ namespace LibraryDomain.Queries.LinksQueries
         {
         }
 
-        public IPublishingHouseLink Create(int Id, string Name)
+        public override IPublishingHouseLink MakeLink(int Id, string Name)
         {
             return new PublishingHouseLink(Id, Name.Trim());
         }
 
         protected override IPublishingHouseLink DalToQuery(PublishingHouseView Dal)
         {
-            return Create(Dal.Id, Dal.Name);
+            return MakeLink(Dal.Id, Dal.Name);
         }
     }
 }

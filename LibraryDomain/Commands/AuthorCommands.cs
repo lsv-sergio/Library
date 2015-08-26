@@ -20,7 +20,7 @@ namespace LibraryDomain.Commands
             _authorDalCommands = AuthorCommands;
         }
 
-        public override int Save(BaseDomain Domain)
+        public override int Save(IBaseDomain Domain)
         {
             int authorId = 0;
             AuthorDomain authorDomain = Domain as AuthorDomain;
@@ -61,7 +61,7 @@ namespace LibraryDomain.Commands
             } return authorId;
         }
 
-        public override int Delete(BaseDomain Domain)
+        public override int Delete(IBaseDomain Domain)
         {
             int authorId = 0;
             AuthorDomain authorDomain = Domain as AuthorDomain;
