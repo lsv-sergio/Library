@@ -6,6 +6,7 @@ using System.Linq;
 using Moq;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Collections.ObjectModel;
 
 namespace Library.Tests.DAL
 {
@@ -13,12 +14,13 @@ namespace Library.Tests.DAL
     public class UnitOfWorkTest
     {
             Mock<EFLibraryDbContext> _moqDbContext;
+            Mock<DbSet<Author>> _moqDbSet;
 
         [TestInitialize]
         public void Init()
         {
 
-            IList<Author> authors = new List<Author>()
+            List<Author> authors = new List<Author>()
             {
                 new Author(){Id = 1, Name = "Борис Акунин"},
                 new Author(){Id = 2, Name = "Джереми Стронг"},
@@ -27,37 +29,23 @@ namespace Library.Tests.DAL
             };
             IQueryable<Author> authorsQueryable = authors.AsQueryable();
 
-            var moqDbSet = new Mock<DbSet<Author>>();
-            moqDbSet.As<IQueryable<Author>>().Setup(x => x.Provider).Returns(authorsQueryable.Provider);
-            moqDbSet.As<IQueryable<Author>>().Setup(x => x.Expression).Returns(authorsQueryable.Expression);
-            moqDbSet.As<IQueryable<Author>>().Setup(x => x.GetEnumerator()).Returns(authorsQueryable.GetEnumerator());
-            moqDbSet.As<IQueryable<Author>>().Setup(x => x.ElementType).Returns(authorsQueryable.ElementType);
-            moqDbSet.Setup(x => x.Find(new object[] { It.IsAny<object>() })).Returns<object[]>(
+            _moqDbSet = new Mock<DbSet<Author>>();
+            _moqDbSet.As<IQueryable<Author>>().Setup(x => x.Provider).Returns(authorsQueryable.Provider);
+            _moqDbSet.As<IQueryable<Author>>().Setup(x => x.Expression).Returns(authorsQueryable.Expression);
+            _moqDbSet.As<IQueryable<Author>>().Setup(x => x.GetEnumerator()).Returns(authorsQueryable.GetEnumerator());
+            _moqDbSet.As<IQueryable<Author>>().Setup(x => x.ElementType).Returns(authorsQueryable.ElementType);
+            _moqDbSet.Setup(x => x.Find(new object[] { It.IsAny<object>() })).Returns<object[]>(
                 x =>
                 {
                     if(x.Count() != 1)
                         return null;
                     return authors.FirstOrDefault(y => y.Id == (int)x.First());
                 });
-            moqDbSet.Setup(x => x.Add(It.IsAny<Author>())).Returns<Author>(
-                x =>
-                {
-                    authors.Add(x);
-                    return x;
-                });
-            moqDbSet.Setup(x => x.Remove(It.IsAny<Author>())).Returns<Author>(
-                x =>
-                {
-                    if (!authors.Contains(x))
-                        return null;
-                    authors.Remove(x);
-                    return x;
-                });
-
-            var dbSet = moqDbSet.Object;
+            _moqDbSet.Setup(x => x.Add(It.IsAny<Author>()));
+            _moqDbSet.Setup(x => x.Remove(It.IsAny<Author>())).Returns<Author>(x => x);
 
             _moqDbContext = new Mock<EFLibraryDbContext>();
-            _moqDbContext.Setup(x => x.Set<Author>()).Returns(dbSet);
+            _moqDbContext.Setup(x => x.Set<Author>()).Returns(_moqDbSet.Object);
         }
 
         [TestMethod]
@@ -137,13 +125,13 @@ namespace Library.Tests.DAL
         }
 
         [TestMethod]
-        public void GetEntitiesMethod_None_ReturnsIQueryableEnity()
+        public void GetEntitiesMethod_None_ReturnsIEnumerableEnity()
         {
             UnitOfWork uow = new UnitOfWork(_moqDbContext.Object);
 
             var list = uow.GetEntities<Author>();
 
-            Assert.IsInstanceOfType(list, typeof(IQueryable<Author>));
+            Assert.IsInstanceOfType(list, typeof(IEnumerable<Author>));
             Assert.IsTrue(list.Count() > 0);
         }
         
@@ -171,15 +159,9 @@ namespace Library.Tests.DAL
         {
             UnitOfWork uow = new UnitOfWork(_moqDbContext.Object);
 
-            int oldCount = uow.GetEntities<Author>().Count();
-
             Author author = uow.UpdateEntity<Author>(new Author() { Id = 5, Name = "Артур Конан Дойл" });
 
-            int newCount = uow.GetEntities<Author>().Count();
-
             Assert.IsNotNull(author);
-
-            Assert.AreEqual(newCount, oldCount + 1);
         }
 
         [TestMethod]
@@ -198,15 +180,11 @@ namespace Library.Tests.DAL
         {
             UnitOfWork uow = new UnitOfWork(_moqDbContext.Object);
 
-            int oldCount = uow.GetEntities<Author>().Count();
-
             Author author = uow.UpdateEntity<Author>(new Author() { Id = 5, Name = "Артур Конан Дойл" });
-
-            int newCount = uow.GetEntities<Author>().Count();
 
             Assert.IsNotNull(author);
 
-            Assert.AreEqual(newCount, oldCount + 1);
+            _moqDbSet.Verify(x => x.Add(It.IsAny<Author>()), Times.Once);
         }
         
         [TestMethod]
@@ -218,6 +196,8 @@ namespace Library.Tests.DAL
             Author newAuthor = uow.AddEntity<Author>(null);
 
             Assert.IsNull(newAuthor);
+
+            _moqDbSet.Verify(x => x.Add(It.IsAny<Author>()), Times.Never);
         }
 
         [TestMethod]
@@ -225,16 +205,11 @@ namespace Library.Tests.DAL
         {
             UnitOfWork uow = new UnitOfWork(_moqDbContext.Object);
 
-            int oldCount = uow.GetEntities<Author>().Count();
-
             Author author = uow.DeleteEntity<Author>(new Author() { Id = 5, Name = "Артур Конан Дойл" });
-
-            int newCount = uow.GetEntities<Author>().Count();
 
             Assert.IsNull(author);
 
-            Assert.AreEqual(newCount, oldCount);
-
+            _moqDbSet.Verify(x => x.Remove(It.IsAny<Author>()), Times.Never);
         }
         
         [TestMethod]
@@ -242,16 +217,11 @@ namespace Library.Tests.DAL
         {
             UnitOfWork uow = new UnitOfWork(_moqDbContext.Object);
 
-            int oldCount = uow.GetEntities<Author>().Count();
-
             Author author = uow.DeleteEntity<Author>(uow.GetEntity<Author>(1));
-
-            int newCount = uow.GetEntities<Author>().Count();
 
             Assert.IsNotNull(author);
 
-            Assert.AreEqual(newCount, oldCount - 1);
-
+            _moqDbSet.Verify(x => x.Remove(It.IsAny<Author>()), Times.Once);
         }
 
         [TestMethod]
@@ -259,16 +229,11 @@ namespace Library.Tests.DAL
         {
             UnitOfWork uow = new UnitOfWork(_moqDbContext.Object);
 
-            int oldCount = uow.GetEntities<Author>().Count();
-
             Author author = uow.DeleteEntity<Author>(null);
-
-            int newCount = uow.GetEntities<Author>().Count();
 
             Assert.IsNull(author);
 
-            Assert.AreEqual(newCount, oldCount);
-
+            _moqDbSet.Verify(x => x.Remove(It.IsAny<Author>()), Times.Never);
         }
 
         [TestMethod]

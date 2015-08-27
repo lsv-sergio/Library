@@ -14,7 +14,7 @@ namespace LibraryDal.Infrastructure.UnitOfWork
     {
         TEntity GetEntity<TEntity>(int EntityId) where TEntity : class, IBaseDal;
         TEntity GetEntity<TEntity>(Func<TEntity, bool> filter) where TEntity : class, IBaseDal;
-        IQueryable<TEntity> GetEntities<TEntity>() where TEntity : class, IBaseDal;
+        IEnumerable<TEntity> GetEntities<TEntity>() where TEntity : class, IBaseDal;
         IEnumerable<TEntity> GetEntities<TEntity>(Func<TEntity, bool> filter) where TEntity : class, IBaseDal;
     }
 }

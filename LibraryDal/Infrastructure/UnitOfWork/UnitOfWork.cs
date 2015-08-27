@@ -21,17 +21,32 @@ namespace LibraryDal.Infrastructure.UnitOfWork
 
         private IDbSet<TEntity> GetDbSet<TEntity>() where TEntity : class, IBaseDal
         {
+            IDbSet<TEntity> dbSet = null;
             if (_dbContext == null)
-                return null;
-            return _dbContext.Set<TEntity>();
+                return dbSet;
+            try
+            {
+                dbSet = _dbContext.Set<TEntity>();
+            }
+            catch (Exception ex)
+            {
+            }
+            return dbSet;
         }
 
         public TEntity FindEntity<TEntity>(params object[] KeyValues) where TEntity : class, IBaseDal
         {
-            IDbSet<TEntity> dbSet = GetDbSet<TEntity>();
-            if (dbSet == null)
-                return null;
-            return dbSet.Find(KeyValues);
+                IDbSet<TEntity> dbSet = GetDbSet<TEntity>();
+                if (dbSet == null)
+                    return null;
+            try
+            {
+                return dbSet.Find(KeyValues);
+            }
+            catch (Exception ex)
+            {
+            }
+            return null;
         }
 
         public TEntity GetEntity<TEntity>(int EntityId) where TEntity : class, IBaseDal
@@ -41,7 +56,14 @@ namespace LibraryDal.Infrastructure.UnitOfWork
             IDbSet<TEntity> dbSet = GetDbSet<TEntity>();
             if (dbSet == null)
                 return null;
-            return dbSet.FirstOrDefault(x => x.Id == EntityId);
+            try
+            {
+                return dbSet.FirstOrDefault(x => x.Id == EntityId);
+            }
+            catch (Exception ex)
+            {
+            }
+            return null;
         }
 
         public TEntity GetEntity<TEntity>(Func<TEntity, bool> filter) where TEntity : class, IBaseDal
@@ -52,26 +74,51 @@ namespace LibraryDal.Infrastructure.UnitOfWork
             IDbSet<TEntity> dbSet = GetDbSet<TEntity>();
             if (dbSet == null)
                 return null;
-            return dbSet.FirstOrDefault(filter);
+            try
+            {
+                return dbSet.FirstOrDefault(filter);
+            }
+            catch (Exception ex)
+            {
+            }
+            return null;
         }
 
-        public IQueryable<TEntity> GetEntities<TEntity>() where TEntity : class, IBaseDal
+        public IEnumerable<TEntity> GetEntities<TEntity>() where TEntity : class, IBaseDal
         {
+            IEnumerable<TEntity> emptyList = new List<TEntity>();
+
             IDbSet<TEntity> dbSet = GetDbSet<TEntity>();
             if (dbSet == null)
-                return new List<TEntity>().AsQueryable();
-            return dbSet;
+                return emptyList;
+
+            try
+            {
+                return dbSet.AsEnumerable();
+            }
+            catch (Exception ex)
+            {
+            }
+            return emptyList;
         }
 
         public IEnumerable<TEntity> GetEntities<TEntity>(Func<TEntity, bool> filter) where TEntity : class, IBaseDal
         {
+            IEnumerable<TEntity> emptyList = new List<TEntity>();
             if (filter == null)
-                return new List<TEntity>().AsEnumerable();
+                return emptyList;
 
             IDbSet<TEntity> dbSet = GetDbSet<TEntity>();
             if (dbSet == null)
-                return new List<TEntity>().AsEnumerable();
-            return dbSet.Where(filter).ToList().AsEnumerable();
+                return emptyList;
+            try
+            {
+                return dbSet.Where(filter).ToList().AsEnumerable();
+            }
+            catch (Exception ex)
+            {
+            }
+            return emptyList;
         }
 
         public TEntity UpdateEntity<TEntity>(TEntity Entity) where TEntity : class, IBaseDal
@@ -90,16 +137,22 @@ namespace LibraryDal.Infrastructure.UnitOfWork
                 return Entity;
 
             }
-            catch (Exception ex)
-            {
+                catch (Exception ex)
+                {
+                }
                 return null;
-            }
         }
 
         public void SetModifiedEntityState<TEntity>(TEntity Entity) where TEntity : class, IBaseDal
         {
             if(_dbContext != null)
-            _dbContext.Entry(Entity).State = System.Data.Entity.EntityState.Modified;
+                try
+                {
+                    _dbContext.Entry(Entity).State = System.Data.Entity.EntityState.Modified;
+                }
+                catch (Exception ex)
+                {
+                }
         }
 
         public TEntity AddEntity<TEntity>(TEntity Entity) where TEntity : class, IBaseDal
@@ -116,8 +169,8 @@ namespace LibraryDal.Infrastructure.UnitOfWork
             }
             catch (Exception ex)
             {
-                return null;
             }
+            return null;
         }
 
         public void AddRangeEntities<TEntity>(IEnumerable<TEntity> Entities) where TEntity : class, IBaseDal
@@ -152,7 +205,14 @@ namespace LibraryDal.Infrastructure.UnitOfWork
                 return 0;
             if (dbSet.Count() == 0)
                 return 1;
-            return dbSet.Max(x => x.Id) + 1;
+            try
+            {
+                return dbSet.Max(x => x.Id) + 1;
+            }
+            catch (Exception ex)
+            {
+            }
+            return 1;
         }
 
         public void Dispose()

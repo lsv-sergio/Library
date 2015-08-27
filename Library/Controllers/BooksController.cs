@@ -40,8 +40,8 @@ namespace Library.Controllers
                 model = bookDomainsList.Select(x => ViewToListModel(x)).OrderBy(x => x.Name).ToList();
 
             ViewBag.Title = "Список книг";
-            if(Request.IsAjaxRequest())
-                return PartialView("PartialIndex",model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialIndex", model);
             return View("Index", model);
         }
 
@@ -58,9 +58,9 @@ namespace Library.Controllers
             BookEditModel model = DomainToEditModel(bookDomain);
 
             ViewBag.Title = "Изменение книги";
-            if(Request.IsAjaxRequest())
-                return PartialView("PartialEdit",model);
-            return View("Edit",model);
+            if (Request.IsAjaxRequest())
+                return PartialView("PartialEdit", model);
+            return View("Edit", model);
         }
 
         [HttpPost]
@@ -107,9 +107,10 @@ namespace Library.Controllers
 
                     if (bookDomain.PublishingHouse.Id != model.PublishingHouseId)
                         bookDomain.SetPublishingHouse(_linkFactory.GetById<IPublishingHouseLink>(model.PublishingHouseId));
-
-                    if (bookDomain.BookSeries.Id != model.BookSeriesId)
-                        bookDomain.SetBookSeries(_linkFactory.GetById<IBookSeriesLink>(model.BookSeriesId));
+                    IBookSeriesLink currentBookSeries = null;
+                    if (model.BookSeriesId > 0)
+                        currentBookSeries = _linkFactory.GetById<IBookSeriesLink>(model.BookSeriesId);
+                    bookDomain.SetBookSeries(currentBookSeries);
                 }
 
                 bookDomain.Save();

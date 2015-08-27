@@ -41,3 +41,7 @@ D:\netProject\Library\Library\bin\ru\System.Web.WebPages.Razor.resources.dll
 D:\netProject\Library\Library\obj\Release\Library.csprojResolveAssemblyReference.cache
 D:\netProject\Library\Library\obj\Release\Library.dll
 D:\netProject\Library\Library\obj\Release\Library.pdb
+D:\netProject\Library\Library\bin\EntityFramework.SqlServer.dll
+D:\netProject\Library\Library\bin\EntityFramework.SqlServer.xml
+D:\netProject\Library\Library\bin\ru\EntityFramework.resources.dll
+D:\netProject\Library\Library\bin\ru\EntityFramework.SqlServer.resources.dll

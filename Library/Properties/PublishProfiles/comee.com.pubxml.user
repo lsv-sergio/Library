@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Этот файл используется в процессе публикации или упаковки вашего веб-проекта. Вы можете настроить поведение процесса,
+изменив этот файл MSBuild. Дополнительные сведения см. по адресу http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>ftp://lsv-sergio.somee.com/www.lsv-sergio.somee.com/Library</_PublishTargetUrl>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAK5ZhKxOrXk2X7bn1kAFqHgAAAAACAAAAAAAQZgAAAAEAACAAAADB517fSKzx9R50LJLz0snyO1vTJeG4cSEWDF8L06QewgAAAAAOgAAAAAIAACAAAADC65Q5lVvMGrW9jyZeufcMBcBn0e0wX+W+DUB3xkJCYiAAAAC3RJTq70xRkDHrxFyRhM5ETDkB/xnePuIaOGxT17ssLkAAAABh3XGUmni+V/B3mUiDi47gXTe1JmSM3z2VmGDItHjiZfTbmAhn3s9g+/scOSPfIb/BNNWNN53Jn/EEpfHIQgnh</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/Library.mdf">
+      <publishTime>08/10/2015 13:24:30</publishTime>
+    </File>
+    <File Include="App_Data/Library_log.ldf">
+      <publishTime>08/10/2015 13:24:30</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>07/27/2015 17:38:45</publishTime>
+    </File>
+    <File Include="bin/Autofac.dll">
+      <publishTime>07/29/2015 12:08:25</publishTime>
+    </File>
+    <File Include="bin/Autofac.Integration.Mvc.dll">
+      <publishTime>07/29/2015 12:10:03</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>07/29/2015 12:32:48</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>07/29/2015 12:32:48</publishTime>
+    </File>
+    <File Include="bin/Library.dll">
+      <publishTime>08/27/2015 18:31:06</publishTime>
+    </File>
+    <File Include="bin/LibraryDal.dll">
+      <publishTime>08/27/2015 18:31:05</publishTime>
+    </File>
+    <File Include="bin/LibraryDomain.dll">
+      <publishTime>08/27/2015 18:31:05</publishTime>
+    </File>
+    <File Include="bin/LoggerManager.dll">
+      <publishTime>08/27/2015 03:45:06</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/27/2015 17:38:44</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>07/27/2015 17:38:49</publishTime>
+    </File>
+    <File Include="bin/ru/EntityFramework.resources.dll">
+      <publishTime>08/27/2015 14:55:44</publishTime>
+    </File>
+    <File Include="bin/ru/EntityFramework.SqlServer.resources.dll">
+      <publishTime>08/27/2015 14:55:44</publishTime>
+    </File>
+    <File Include="bin/ru/System.Web.Helpers.resources.dll">
+      <publishTime>07/27/2015 17:38:47</publishTime>
+    </File>
+    <File Include="bin/ru/System.Web.Mvc.resources.dll">
+      <publishTime>07/27/2015 17:38:48</publishTime>
+    </File>
+    <File Include="bin/ru/System.Web.Optimization.resources.dll">
+      <publishTime>07/27/2015 17:38:48</publishTime>
+    </File>
+    <File Include="bin/ru/System.Web.Razor.resources.dll">
+      <publishTime>07/27/2015 17:38:47</publishTime>
+    </File>
+    <File Include="bin/ru/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>07/27/2015 17:38:47</publishTime>
+    </File>
+    <File Include="bin/ru/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>07/27/2015 17:38:47</publishTime>
+    </File>
+    <File Include="bin/ru/System.Web.WebPages.resources.dll">
+      <publishTime>07/27/2015 17:38:47</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>07/27/2015 17:38:43</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>07/27/2015 17:38:44</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>07/27/2015 17:38:43</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>07/27/2015 17:38:42</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>07/27/2015 17:38:43</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>07/27/2015 17:38:43</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>07/27/2015 17:38:43</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>07/27/2015 17:38:45</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>06/16/2015 16:12:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>06/16/2015 16:12:50</publishTime>
+    </File>
+    <File Include="Content/noimage.gif">
+      <publishTime>08/08/2015 21:52:10</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>08/22/2015 00:03:03</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>07/27/2015 17:38:23</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>06/16/2015 15:56:18</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>06/16/2015 15:56:18</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>06/16/2015 15:56:18</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>06/16/2015 15:56:18</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/27/2015 17:38:23</publishTime>
+    </File>
+    <File Include="Model1.edmx.diagram">
+      <publishTime>08/27/2015 14:42:22</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>08/27/2015 14:55:49</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>06/16/2015 16:12:50</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>06/16/2015 16:12:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>07/27/2015 17:38:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>07/27/2015 17:38:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>07/27/2015 17:38:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>08/11/2015 00:30:21</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>08/11/2015 00:30:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>07/27/2015 17:38:46</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>07/27/2015 17:38:46</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>07/27/2015 17:38:47</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>07/27/2015 17:38:47</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>07/27/2015 17:38:45</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>07/27/2015 17:38:46</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>07/27/2015 17:38:46</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>08/11/2015 00:30:20</publishTime>
+    </File>
+    <File Include="Views/Authors/Details.cshtml">
+      <publishTime>08/11/2015 22:28:52</publishTime>
+    </File>
+    <File Include="Views/Authors/Edit.cshtml">
+      <publishTime>08/11/2015 22:27:46</publishTime>
+    </File>
+    <File Include="Views/Authors/Index.cshtml">
+      <publishTime>08/11/2015 00:40:19</publishTime>
+    </File>
+    <File Include="Views/Authors/PartialDetails.cshtml">
+      <publishTime>08/21/2015 23:57:38</publishTime>
+    </File>
+    <File Include="Views/Authors/PartialEdit.cshtml">
+      <publishTime>08/11/2015 22:31:21</publishTime>
+    </File>
+    <File Include="Views/Authors/PartialIndex.cshtml">
+      <publishTime>08/11/2015 22:30:33</publishTime>
+    </File>
+    <File Include="Views/Books/Details.cshtml">
+      <publishTime>08/11/2015 01:16:21</publishTime>
+    </File>
+    <File Include="Views/Books/Edit.cshtml">
+      <publishTime>08/11/2015 01:08:47</publishTime>
+    </File>
+    <File Include="Views/Books/Find.cshtml">
+      <publishTime>08/11/2015 01:08:43</publishTime>
+    </File>
+    <File Include="Views/Books/Index.cshtml">
+      <publishTime>08/27/2015 12:17:53</publishTime>
+    </File>
+    <File Include="Views/Books/PartialDetails.cshtml">
+      <publishTime>08/11/2015 01:23:41</publishTime>
+    </File>
+    <File Include="Views/Books/PartialEdit.cshtml">
+      <publishTime>08/11/2015 01:13:43</publishTime>
+    </File>
+    <File Include="Views/Books/PartialFind.cshtml">
+      <publishTime>08/11/2015 01:14:53</publishTime>
+    </File>
+    <File Include="Views/Books/PartialIndex.cshtml">
+      <publishTime>08/11/2015 23:17:35</publishTime>
+    </File>
+    <File Include="Views/BookSeries/Details.cshtml">
+      <publishTime>08/11/2015 22:44:10</publishTime>
+    </File>
+    <File Include="Views/BookSeries/Edit.cshtml">
+      <publishTime>08/11/2015 22:44:08</publishTime>
+    </File>
+    <File Include="Views/BookSeries/Index.cshtml">
+      <publishTime>08/11/2015 00:43:40</publishTime>
+    </File>
+    <File Include="Views/BookSeries/PartialDetails.cshtml">
+      <publishTime>08/21/2015 23:54:11</publishTime>
+    </File>
+    <File Include="Views/BookSeries/PartialEdit.cshtml">
+      <publishTime>08/11/2015 22:57:20</publishTime>
+    </File>
+    <File Include="Views/BookSeries/PartialIndex.cshtml">
+      <publishTime>08/11/2015 23:17:35</publishTime>
+    </File>
+    <File Include="Views/PublishingHouse/Details.cshtml">
+      <publishTime>08/11/2015 23:16:32</publishTime>
+    </File>
+    <File Include="Views/PublishingHouse/Edit.cshtml">
+      <publishTime>08/11/2015 23:17:32</publishTime>
+    </File>
+    <File Include="Views/PublishingHouse/Index.cshtml">
+      <publishTime>08/11/2015 00:46:35</publishTime>
+    </File>
+    <File Include="Views/PublishingHouse/PartialDetails.cshtml">
+      <publishTime>08/21/2015 23:59:43</publishTime>
+    </File>
+    <File Include="Views/PublishingHouse/PartialEdit.cshtml">
+      <publishTime>08/11/2015 23:13:57</publishTime>
+    </File>
+    <File Include="Views/PublishingHouse/PartialIndex.cshtml">
+      <publishTime>08/11/2015 23:13:26</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>07/27/2015 17:38:23</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>08/27/2015 01:18:37</publishTime>
+    </File>
+    <File Include="Views/Shared/_PartialLinkSection.cshtml">
+      <publishTime>08/21/2015 22:59:05</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>08/11/2015 00:30:37</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>07/27/2015 17:38:23</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/27/2015 15:07:58</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

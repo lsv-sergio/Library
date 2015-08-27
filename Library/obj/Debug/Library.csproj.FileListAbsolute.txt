@@ -6,6 +6,7 @@ D:\netProject\Library\Library\bin\Antlr3.Runtime.dll
 D:\netProject\Library\Library\bin\Autofac.dll
 D:\netProject\Library\Library\bin\Autofac.Integration.Mvc.dll
 D:\netProject\Library\Library\bin\EntityFramework.dll
+D:\netProject\Library\Library\bin\EntityFramework.SqlServer.dll
 D:\netProject\Library\Library\bin\LibraryDal.dll
 D:\netProject\Library\Library\bin\LibraryDomain.dll
 D:\netProject\Library\Library\bin\Microsoft.Web.Infrastructure.dll
@@ -23,6 +24,7 @@ D:\netProject\Library\Library\bin\LibraryDomain.pdb
 D:\netProject\Library\Library\bin\Autofac.xml
 D:\netProject\Library\Library\bin\Autofac.Integration.Mvc.xml
 D:\netProject\Library\Library\bin\EntityFramework.xml
+D:\netProject\Library\Library\bin\EntityFramework.SqlServer.xml
 D:\netProject\Library\Library\bin\System.Web.Helpers.xml
 D:\netProject\Library\Library\bin\System.Web.Mvc.xml
 D:\netProject\Library\Library\bin\System.Web.Optimization.xml
@@ -32,6 +34,8 @@ D:\netProject\Library\Library\bin\System.Web.WebPages.Deployment.xml
 D:\netProject\Library\Library\bin\System.Web.WebPages.Razor.xml
 D:\netProject\Library\Library\bin\Antlr3.Runtime.pdb
 D:\netProject\Library\Library\bin\Newtonsoft.Json.xml
+D:\netProject\Library\Library\bin\ru\EntityFramework.resources.dll
+D:\netProject\Library\Library\bin\ru\EntityFramework.SqlServer.resources.dll
 D:\netProject\Library\Library\bin\ru\System.Web.Helpers.resources.dll
 D:\netProject\Library\Library\bin\ru\System.Web.Mvc.resources.dll
 D:\netProject\Library\Library\bin\ru\System.Web.Optimization.resources.dll

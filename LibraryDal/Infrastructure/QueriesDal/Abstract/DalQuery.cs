@@ -60,7 +60,7 @@ namespace LibraryDal.Infrastructure.QueriesDal.Abstract
             if (_uow == null)
                 return new List<TEntity>().AsEnumerable();
  
-            return _uow.GetEntities<TEntity>().ToList();
+            return _uow.GetEntities<TEntity>();
         }
     }
 }
